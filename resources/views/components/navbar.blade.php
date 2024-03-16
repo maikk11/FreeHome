@@ -17,6 +17,10 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('immobili')}}">Immobili</a>
       </li>
+      <form action="{{ route('logout')}}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+      </form>
       @endauth
     </ul>
   </div>
