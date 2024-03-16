@@ -5,9 +5,19 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
+      @guest
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('immobili')}}">Login</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('register')}}">Registrati</a>
+      </li>
+      @endguest
+      @auth
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('immobili')}}">Immobili</a>
       </li>
+      @endauth
     </ul>
   </div>
 </nav>
