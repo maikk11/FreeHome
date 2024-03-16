@@ -7,7 +7,7 @@
     <ul class="navbar-nav ml-auto">
       @guest
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('immobili')}}">Login</a>
+        <a class="nav-link" href="{{ route('login')}}">Login</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('register')}}">Registrati</a>
