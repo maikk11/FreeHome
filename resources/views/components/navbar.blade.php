@@ -15,7 +15,7 @@
       @endguest
       @auth
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('immobili')}}">Immobili</a>
+        <a class="nav-link" href="{{ route('immobili.index')}}">Immobili</a>
       </li>
       <form action="{{ route('logout')}}" method="POST">
         @csrf
