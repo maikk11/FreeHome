@@ -21,7 +21,7 @@ class ImmobiliController extends Controller
      */
     public function create()
     {
-        //
+        return view('immobili.create');
     }
 
     /**
@@ -29,7 +29,11 @@ class ImmobiliController extends Controller
      */
     public function store(StoreimmobiliRequest $request)
     {
-        //
+        $user_id = auth()->id();
+        $validated = $request->validated();
+        $validated['user_id'] = $user_id;
+        Immobili::create($validated);
+        return redirect()->back()->with('success', 'immobile inserito');
     }
 
     /**
