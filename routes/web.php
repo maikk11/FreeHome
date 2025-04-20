@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImmobiliController;
 use App\Http\Controllers\ImmobileController;
+use App\Http\Controllers\InquilinoController;
 
 Route::get('/', function () {
     return view('index');
@@ -20,3 +21,7 @@ Route::get('/login', function () {
 Route::resource('immobili', ImmobiliController::class);
 Route::get('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
 Route::get('immobile/{id}', [ImmobileController::class, 'index'])->name('immobili.immobile');
+
+//Gestione inquilini
+Route::get('inquilini/{id}', [InquilinoController::class, 'create'])->name('inquilini.create');
+Route::post('inquilini/store/{id}', [InquilinoController::class, 'store'])->name('inquilini.store');

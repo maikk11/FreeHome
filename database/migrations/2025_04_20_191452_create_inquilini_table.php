@@ -26,9 +26,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('numero_telefono', 20);
             $table->date('data_subentro');
-            $table->date('data_uscita');
+            $table->date('data_uscita')->nullable();
             $table->string('contratto_lavorativo', 255);
-            $table->integer('numero_stanza');
+            $table->integer('numero_stanza')->nullable();
             $table->unsignedBigInteger('immobile_id');
             $table->foreign('immobile_id')->references('id')->on('immobili');
         });
