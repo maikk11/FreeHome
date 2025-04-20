@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImmobiliController;
+use App\Http\Controllers\ImmobileController;
 
 Route::get('/', function () {
     return view('index');
@@ -18,3 +19,4 @@ Route::get('/login', function () {
 //Gestione immobili
 Route::resource('immobili', ImmobiliController::class);
 Route::get('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
+Route::get('immobile/{id}', [ImmobileController::class, 'index'])->name('immobili.immobile');
