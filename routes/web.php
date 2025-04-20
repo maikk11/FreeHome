@@ -17,4 +17,4 @@ Route::get('/login', function () {
 
 //Gestione immobili
 Route::resource('immobili', ImmobiliController::class);
-Route::delete('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
+Route::get('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');

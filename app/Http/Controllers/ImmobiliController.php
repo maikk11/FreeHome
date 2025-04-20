@@ -71,7 +71,6 @@ class ImmobiliController extends Controller
      */
     public function destroy(string $id)
     {
-        dd($id);
         DB::table('immobili')->where('id', $id)->delete();
         return redirect()->back();
     }
