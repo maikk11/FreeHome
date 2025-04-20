@@ -5,15 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\immobili;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImmobiliController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('immobili.immobili');
+        //$immobili = immobili::where('user_id', $request->user()->id)->first();
+        $user_id = $request->user()->id;
+        $immobili = DB::table('immobili')->where('user_id', $user_id)->get();
+
+        return view('immobili.immobili', ['immobili' => $immobili]);
     }
 
     /**
@@ -63,8 +69,10 @@ class ImmobiliController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(immobili $immobili)
+    public function destroy(string $id)
     {
-        //
+        dd($id);
+        DB::table('immobili')->where('id', $id)->delete();
+        return redirect()->back();
     }
 }

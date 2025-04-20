@@ -15,4 +15,6 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
+//Gestione immobili
 Route::resource('immobili', ImmobiliController::class);
+Route::delete('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
