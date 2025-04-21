@@ -29,8 +29,8 @@ return new class extends Migration
             $table->date('data_uscita')->nullable();
             $table->string('contratto_lavorativo', 255);
             $table->integer('numero_stanza')->nullable();
-            $table->unsignedBigInteger('immobile_id');
-            $table->foreign('immobile_id')->references('id')->on('immobili');
+            $table->unsignedBigInteger('immobile_id')->nullable();;
+            $table->foreign('immobile_id')->references('id')->on('immobili')->onDelete('set null');
         });
     }
 

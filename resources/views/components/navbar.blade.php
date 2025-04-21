@@ -17,6 +17,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('immobili.index')}}">Immobili</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('inquilini.index')}}">Inquilini</a>
+      </li>
       <form action="{{ route('logout')}}" method="POST">
         @csrf
         <button type="submit">Logout</button>

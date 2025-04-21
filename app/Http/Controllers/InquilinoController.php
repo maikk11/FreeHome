@@ -13,9 +13,10 @@ class InquilinoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $id)
     {
-
+        $inquilino = DB::table('inquilini')->where('id', $id)->get()->first();
+        return view('inquilini.inquilino', ['inquilino' => $inquilino]);
     }
 
     /**
@@ -36,6 +37,12 @@ class InquilinoController extends Controller
         $validated['user_id'] = $user_id;
         $validated['immobile_id'] = $id_immobile;
         Inquilini::create($validated);
+
+        $locali_affittati = DB::table('immobili')->where('id', $id_immobile)->value('locali_affittati');
+        $locali_affittati = $locali_affittati ?? 0;
+        $locali_affittati+=1;
+        DB::table('immobili')->where('id', $id_immobile)->update(['locali_affittati' => $locali_affittati]);
+
         return redirect()->back()->with('success', 'Dati inseriti correttamente.');
     }
 
