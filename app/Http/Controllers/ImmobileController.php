@@ -73,12 +73,12 @@ class ImmobileController extends Controller
         return redirect()->back();
     }
 
-    public function uscita(string $inquilino_id, string $immobile_id)
+    public function uscita($inquilino_id, $immobile_id, $data)
     {
         $locali_affittati = DB::table('immobili')->where('id', $immobile_id)->value('locali_affittati');
         $locali_affittati-=1;
         DB::table('immobili')->where('id', $immobile_id)->update(['locali_affittati' => $locali_affittati]);
-        DB::table('inquilini')->where('id', $inquilino_id)->update(['data_uscita'=>'2026-01-01', 'immobile_id'=>null]);
-        return redirect()->back();
+        DB::table('inquilini')->where('id', $inquilino_id)->update(['data_uscita'=>$data, 'immobile_id'=>null]);
+        return $this->index($immobile_id);
     }
 }

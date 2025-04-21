@@ -43,7 +43,7 @@ class InquilinoController extends Controller
         $locali_affittati+=1;
         DB::table('immobili')->where('id', $id_immobile)->update(['locali_affittati' => $locali_affittati]);
 
-        return redirect()->back()->with('success', 'Dati inseriti correttamente.');
+        return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');
     }
 
     /**

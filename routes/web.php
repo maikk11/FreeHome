@@ -22,7 +22,7 @@ Route::get('/login', function () {
 Route::resource('immobili', ImmobiliController::class);
 Route::get('immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
 Route::get('immobile/{id}', [ImmobileController::class, 'index'])->name('immobili.immobile');
-Route::get('/immobile/uscita/{inquilino_id}/{immobile_id}', [ImmobileController::class, 'uscita'])->name('immobili.uscita');
+Route::get('/immobile/uscita/{inquilino_id}/{immobile_id}/{data}', [ImmobileController::class, 'uscita'])->name('immobili.uscita');
 
 //Gestione inquilini
 Route::get('inquilini/index', [InquiliniController::class, 'index'])->name('inquilini.index');
