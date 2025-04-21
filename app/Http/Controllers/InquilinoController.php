@@ -73,8 +73,9 @@ class InquilinoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy($id)
     {
-
+        DB::table('inquilini')->where('id', $id)->delete();
+        return redirect()->back();
     }
 }

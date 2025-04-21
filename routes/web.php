@@ -29,3 +29,4 @@ Route::get('inquilini/index', [InquiliniController::class, 'index'])->name('inqu
 Route::get('inquilini/{id}', [InquilinoController::class, 'create'])->name('inquilini.create');
 Route::post('inquilini/store/{id}', [InquilinoController::class, 'store'])->name('inquilini.store');
 Route::get('inquilini/index/{id}', [InquilinoController::class, 'index'])->name('inquilini.inquilino');
+Route::delete('inquilini/destroy/{id}', [InquilinoController::class, 'destroy'])->name('inquilini.delete');

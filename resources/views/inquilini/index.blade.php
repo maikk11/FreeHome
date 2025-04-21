@@ -5,6 +5,13 @@
       <div style="padding: 20px;">
         <h2 style="margin: 0 0 10px; font-size: 24px;">{{ $inquilino->nome }} {{$inquilino->cognome}}</h2>
         <a type="button" class="btn btn-success" href="{{ route('inquilini.inquilino', ['id' => $inquilino->id])}}" style="width: 100px;">Entra</a>
+        <form method="POST" action="{{ route('inquilini.delete', ['id' => $inquilino->id]) }}">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn"
+        style="background: #e80808; width:max-content; border-radius:10px;color:white; margin-left:8px"
+        type="submit">Elimina</button>
+         </form>
       </div>
   </div>
     @endforeach
