@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\inquilini;
+use App\Models\immobili;
 
 class InquiliniController extends Controller
 {
@@ -15,7 +16,7 @@ class InquiliniController extends Controller
      */
     public function index()
     {
-        $inquilini = DB::table('inquilini')->get();
+        $inquilini = inquilini::get();
         return view('inquilini.index', ['inquilini' => $inquilini]);
     }
 
@@ -24,23 +25,33 @@ class InquiliniController extends Controller
      */
     public function create(string $id)
     {
-
+        return view('inquilini.create', ['id' => $id]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreinquiliniRequest $request)
+    public function store(StoreinquiliniRequest $request, string $id_immobile)
     {
-
+        $user_id = auth()->id();
+        $validated = $request->validated();
+        $validated['user_id'] = $user_id;
+        $validated['immobile_id'] = $id_immobile;
+        Inquilini::create($validated);
+        $locali_affittati = Immobili::where('id', $id_immobile)->value('locali_affittati');
+        $locali_affittati = $locali_affittati ?? 0;
+        $locali_affittati+=1;
+        Immobili::where('id', $id_immobile)->update(['locali_affittati' => $locali_affittati]);
+        return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(string $id)
     {
-        //
+        $inquilino = Inquilini::where('id', $id)->get()->first();
+        return view('inquilini.inquilino', ['inquilino' => $inquilino]);
     }
 
     /**
@@ -62,8 +73,9 @@ class InquiliniController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy($id)
     {
-
+        Inquilini::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

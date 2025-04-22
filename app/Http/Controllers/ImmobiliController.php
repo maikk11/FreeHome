@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\immobili;
+use App\Models\inquilini;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
@@ -15,10 +16,9 @@ class ImmobiliController extends Controller
      */
     public function index(Request $request)
     {
-        //$immobili = immobili::where('user_id', $request->user()->id)->first();
         $user_id = $request->user()->id;
-        $immobili = DB::table('immobili')->where('user_id', $user_id)->get();
-
+        //$immobili = DB::table('immobili')->where('user_id', $user_id)->get();
+        $immobili = Immobili::where('user_id', $user_id)->get();
         return view('immobili.immobili', ['immobili' => $immobili]);
     }
 
@@ -45,9 +45,11 @@ class ImmobiliController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(immobili $immobili)
+    public function show(string $id)
     {
-        //
+        $immobile = Immobili::where('id', $id)->get()->first();
+        $inquilini = Inquilini::where('immobile_id',$id)->get();
+        return view('immobili.immobile', ['immobile' => $immobile], ['inquilini' => $inquilini]);
     }
 
     /**
@@ -71,8 +73,17 @@ class ImmobiliController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::table('inquilini')->where('immobile_id', $id)->delete();
-        DB::table('immobili')->where('id', $id)->delete();
+        Inquilini::where('immobile_id', $id)->delete();
+        Immobili::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    public function uscita($inquilino_id, $immobile_id, $data)
+    {
+        $locali_affittati = DB::table('immobili')->where('id', $immobile_id)->value('locali_affittati');
+        $locali_affittati-=1;
+        Immobili::where('id', $immobile_id)->update(['locali_affittati' => $locali_affittati]);
+        Inquilini::where('id', $inquilino_id)->update(['data_uscita'=>$data, 'immobile_id'=>null]);
+        return $this->index($immobile_id);
     }
 }
