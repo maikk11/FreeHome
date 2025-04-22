@@ -7,7 +7,6 @@ use App\Models\inquilini;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ImmobiliController extends Controller
 {
@@ -17,7 +16,6 @@ class ImmobiliController extends Controller
     public function index(Request $request)
     {
         $user_id = $request->user()->id;
-        //$immobili = DB::table('immobili')->where('user_id', $user_id)->get();
         $immobili = Immobili::where('user_id', $user_id)->get();
         return view('immobili.immobili', ['immobili' => $immobili]);
     }
@@ -80,10 +78,10 @@ class ImmobiliController extends Controller
 
     public function uscita($inquilino_id, $immobile_id, $data)
     {
-        $locali_affittati = DB::table('immobili')->where('id', $immobile_id)->value('locali_affittati');
+        $locali_affittati = Immobili::where('id', $immobile_id)->value('locali_affittati');
         $locali_affittati-=1;
         Immobili::where('id', $immobile_id)->update(['locali_affittati' => $locali_affittati]);
         Inquilini::where('id', $inquilino_id)->update(['data_uscita'=>$data, 'immobile_id'=>null]);
-        return $this->index($immobile_id);
+        return redirect()->back();
     }
 }

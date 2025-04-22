@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreinquiliniRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\inquilini;
 use App\Models\immobili;
 
