@@ -37,10 +37,8 @@ class InquiliniController extends Controller
         $validated['user_id'] = $user_id;
         $validated['immobile_id'] = $id_immobile;
         Inquilini::create($validated);
-        $locali_affittati = Immobili::where('id', $id_immobile)->value('locali_affittati');
-        $locali_affittati = $locali_affittati ?? 0;
-        $locali_affittati+=1;
-        Immobili::where('id', $id_immobile)->update(['locali_affittati' => $locali_affittati]);
+        $immobile = Immobili::findOrFail($id_immobile);
+        $immobile->incrementaLocaliAffittati();
         return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');
     }
 

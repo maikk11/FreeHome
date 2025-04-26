@@ -26,4 +26,12 @@ class inquilini extends Model
         'contratto_lavorativo',
         'immobile_id',
     ];
+
+    public function uscita($dataUscita)
+    {
+        $this->update([
+            'data_uscita' => $dataUscita,
+            'immobile_id' => null,
+        ]);
+    }
 }

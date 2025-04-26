@@ -78,10 +78,10 @@ class ImmobiliController extends Controller
 
     public function uscita($inquilino_id, $immobile_id, $data)
     {
-        $locali_affittati = Immobili::where('id', $immobile_id)->value('locali_affittati');
-        $locali_affittati-=1;
-        Immobili::where('id', $immobile_id)->update(['locali_affittati' => $locali_affittati]);
-        Inquilini::where('id', $inquilino_id)->update(['data_uscita'=>$data, 'immobile_id'=>null]);
+        $immobile = Immobili::findOrFail($immobile_id);
+        $immobile->decrementaLocaliAffittati();
+        $inquilino = Inquilini::findOrFail($inquilino_id);
+        $inquilino->uscita($data);
         return redirect()->back();
     }
 }
