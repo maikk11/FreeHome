@@ -1,7 +1,7 @@
 <x-main-layout>
     @if(auth()->check() && auth()->user())
-    <h1>Bentornato {{ auth()->user()->name }}</h1>
+    <h1 class="titolo_pagina">Bentornato {{ auth()->user()->name }}</h1>
     @else
-    <h1>Benvenuto</h1>
+    <h1 class="titolo_pagina">Benvenuto</h1>
     @endif
 </x-main-layout>

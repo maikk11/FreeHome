@@ -1,11 +1,11 @@
 <x-main-layout>
-    <div style=" display:flex;  height: 700px; width:100%; background-color:#6CA7DD; border-radius:20px; margin-top:20px" class="container ">
+    <div style=" display:flex;  height: 700px; width:100%; border-radius:20px; margin-top:20px; background-color:lightgray" class="container ">
         <div style="flex:3; ">
-            <img style=" width:90%; height:70%; border-top-left-radius:20px;border-bottom-left-radius:20px; box-shadow: 4px 4px 8px rgba(0, 36, 12, 1.5);"
-                src="https://img.freepik.com/premium-vector/male-profile-flat-blue-simple-icon-with-long-shadowxa_159242-10092.jpg"
+            <img style=" width:90%; height:70%; border-top-left-radius:20px;border-bottom-left-radius:20px; box-shadow: 4px 4px 8px rgba(0, 36, 12, 1.5); margin-top:10%"
+                src="https://previews.123rf.com/images/happyvector071/happyvector0711904/happyvector071190415714/121105442-illustrazione-creativa-del-segnaposto-del-profilo-avatar-predefinito-isolato-su-priorit%C3%A0-bassa.jpg"
                 alt="">
         </div>
-        <ul class="list-group" style="flex:4; border-radius:20px">
+        <ul class="list-group" style="flex:4; border-radius:20px; margin-top:1.5%">
             <li class="list-group-item"><strong>Nome:</strong>{{$inquilino->nome}}</li>
             <li class="list-group-item"><strong>Cognome:</strong>{{$inquilino->cognome}}</li>
             <li class="list-group-item"><strong>Numero telefono:</strong>{{$inquilino->numero_telefono}}</li>

@@ -2,7 +2,7 @@
     @if(session()->has('success'))
     <h2 class="alert alert-success">{{session('success')}}</h2>
     @endif
-    <h1>Inserisci immobile</h1>
+    <h1 class="titolo_pagina">Inserisci immobile</h1>
     <form action="{{ route('immobili.store')}}" method="POST" class="mt-5 mx-auto col-lg-6">
         @csrf
         <div class="mb-3">
@@ -16,7 +16,7 @@
             @error('comune') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <div class="mb-3">
-            <label class="form-label">Via</label>
+            <label class="form-label">Indirizzo</label>
             <input type="text" class="form-control" id="via" name="via" value="{{ old('via') }}">
             @error('via') <span class="small text-danger">{{$message}}</span>@enderror
         </div>

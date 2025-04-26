@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ route('index')}}">FreeHome</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey; color: lightgray;">
+  <a class="navbar-brand" href="{{ route('index')}}" style="margin-left:1%">FreeHome</a>
 
   <!-- Link visibili su schermi grandi -->
   <div class="collapse navbar-collapse" id="navbarNav">

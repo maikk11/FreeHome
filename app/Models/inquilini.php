@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class inquilini extends Model
 {
@@ -29,6 +30,7 @@ class inquilini extends Model
 
     public function uscita($dataUscita)
     {
+        $dataUscita = Carbon::createFromFormat('d-m-Y', $dataUscita)->format('Y-m-d');
         $this->update([
             'data_uscita' => $dataUscita,
             'immobile_id' => null,

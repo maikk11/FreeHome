@@ -2,7 +2,7 @@
     @if(session()->has('success'))
     <h2 class="alert alert-success">{{session('success')}}</h2>
     @endif
-    <h1>Inserisci inquilino</h1>
+    <h1 class="titolo_pagina">Inserisci inquilino</h1>
     <form action="{{ route('inquilini.store',['id' => $id]) }}" method="POST" class="mt-5 mx-auto col-lg-6">
     @csrf
 
@@ -84,7 +84,7 @@
         @error('contratto_lavorativo') <span class="small text-danger">{{ $message }}</span>@enderror
     </div>
 
-    <button type="submit" class="btn btn-primary">Inserisci</button>
+    <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
 </form>
 
 </x-main-layout>
