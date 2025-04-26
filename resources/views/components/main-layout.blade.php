@@ -8,9 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
     <x-navbar></x-navbar>
-    {{$slot}}
+    <main style="flex: 1;">
+        {{$slot}}
+    </main>
     <x-footer></x-footer>
 </body>
 
