@@ -31,4 +31,4 @@ Route::get('inquilini/index/{id}', [InquiliniController::class, 'show'])->name('
 Route::delete('inquilini/destroy/{id}', [InquiliniController::class, 'destroy'])->name('inquilini.delete');
 
 //Gestione profili
-Route::get('profili/index', [ProfiliController::class, 'index'])->name('profili.index');
+Route::get('profili/index/{id}', [ProfiliController::class, 'index'])->name('profili.index');

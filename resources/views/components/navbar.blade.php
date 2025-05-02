@@ -24,7 +24,7 @@
 
     @auth
     <div class="d-flex align-items-center ms-auto" style="gap: 15px; margin-right: 1%;">
-      <a href="{{ route('profili.index') }}">
+      <a href="{{ route('profili.index', ['id' => auth()->user()->id]) }}">
         <img src="https://www.fabriziorocca.it/guide/wp-content/uploads/2018/03/thumb_14400082930User-250x240.png"
              alt="Profilo"
              style="height: 70%; max-height: 40px;">
@@ -51,7 +51,7 @@
       @auth
       <li><a class="dropdown-item" href="{{ route('immobili.index') }}">Immobili</a></li>
       <li><a class="dropdown-item" href="{{ route('inquilini.index') }}">Inquilini</a></li>
-      <li><a class="dropdown-item" href="{{ route('profili.index') }}">Profilo</a></li>
+      <li><a class="dropdown-item" href="{{ route('profili.index', ['id' => auth()->user()->id]) }}">Profilo</a></li>
       <li>
         <form action="{{ route('logout') }}" method="POST" class="dropdown-item m-0 p-0">
           @csrf

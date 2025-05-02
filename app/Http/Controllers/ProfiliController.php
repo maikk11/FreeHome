@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfiliController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('user.profilo');
+        $profilo = DB::table('users')->where('id', $id)->first();
+        return view('user.profilo', ['profilo' => $profilo]);
     }
 
     /**
