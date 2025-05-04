@@ -24,4 +24,7 @@
             <li class="list-group-item"><strong>Immobile:</strong>{{$inquilino->immobile_id}}</li>
         </ul>
     </div>
+    <div>
+        <a type="button" class="btn btn-primary" style="width: 100px; margin-left:50%; margin-top:1%; margin-bottom:1%">Modifica</a>
+    </div>
 </x-main-layout>
