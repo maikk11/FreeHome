@@ -10,6 +10,7 @@
         </ul>
     </div>
     <div style="position: absolute; left:10%; margin-top:1%">
+        <a type="button" class="btn btn-primary" style="width: 100px;" href="{{ route('profili.edit', ['id' => $profilo->id]) }}">Modifica</a>
         <form method="POST" action="{{ route('profili.delete', ['id' => auth()->user()->id]) }}">
         @csrf
         @method('DELETE')

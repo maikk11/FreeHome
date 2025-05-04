@@ -44,17 +44,26 @@ class ProfiliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $profilo = User::where('id', $id)->first();
+        return view('user.edit', ['profilo' => $profilo]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update()
+    public function update(Request $request, User $profilo)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $profilo->id,
+            'birth' => 'required|date',
+        ]);
+
+        $profilo->update($request->only(['name', 'surname', 'email', 'birth']));
+        return view('user.profilo', ['profilo' => $profilo]);
     }
 
     /**
