@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class ProfiliController extends Controller
 {
@@ -12,7 +13,7 @@ class ProfiliController extends Controller
      */
     public function index($id)
     {
-        $profilo = DB::table('users')->where('id', $id)->first();
+        $profilo = User::where('id', $id)->first();
         return view('user.profilo', ['profilo' => $profilo]);
     }
 
@@ -59,8 +60,10 @@ class ProfiliController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy($id)
     {
-
+        $profilo = User::findOrFail($id);
+        $profilo->elimina();
+        return redirect()->route('index');
     }
 }

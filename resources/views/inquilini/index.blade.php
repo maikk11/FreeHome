@@ -11,7 +11,7 @@
         <button class="btn btn"
         style="background: #e80808; width:max-content; border-radius:10px;color:white; margin-left:8px"
         type="submit">Elimina</button>
-         </form>
+        </form>
       </div>
   </div>
     @endforeach

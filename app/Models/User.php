@@ -46,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function elimina(){
+        $id = $this->id;
+        $immobili = Immobili::where('user_id', $id)->get();
+        foreach($immobili as $immobile){
+            Inquilini::where('immobile_id', $immobile->id)->delete();
+        }
+        Immobili::where('user_id', $id)->delete();
+        $this->delete();
+    }
 }

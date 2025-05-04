@@ -9,4 +9,13 @@
             <li class="list-group-item"><strong>Creazione profilo: </strong>{{$profilo->created_at}}</li>
         </ul>
     </div>
+    <div style="position: absolute; left:10%; margin-top:1%">
+        <form method="POST" action="{{ route('profili.delete', ['id' => auth()->user()->id]) }}">
+        @csrf
+        @method('DELETE')
+            <button class="btn btn"
+            style="background: #e80808; width:max-content; border-radius:10px; color:white; margin-left:8px"
+            type="submit">Elimina</button>
+        </form>
+    </div>
 </x-main-layout>
