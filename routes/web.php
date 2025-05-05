@@ -29,6 +29,8 @@ Route::get('inquilini/{id}', [InquiliniController::class, 'create'])->name('inqu
 Route::post('inquilini/store/{id}', [InquiliniController::class, 'store'])->name('inquilini.store');
 Route::get('inquilini/index/{id}', [InquiliniController::class, 'show'])->name('inquilini.inquilino');
 Route::delete('inquilini/destroy/{id}', [InquiliniController::class, 'destroy'])->name('inquilini.delete');
+Route::get('inquilini/edit/{id}', [InquiliniController::class, 'edit'])->name('inquilini.edit');
+Route::put('/inquilini/{inquilino}', [InquiliniController::class, 'update'])->name('inquilini.update');
 
 //Gestione profili
 Route::get('profili/index/{id}', [ProfiliController::class, 'index'])->name('profili.index');

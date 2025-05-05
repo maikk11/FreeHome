@@ -54,18 +54,40 @@ class InquiliniController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $inquilino = Inquilini::where('id', $id)->first();
+        return view('inquilini.edit', ['inquilino' => $inquilino]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update()
+    public function update(Request $request, inquilini $inquilino)
     {
-        //
-    }
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cognome' => 'required|string|max:255',
+            'carta_identità' => 'required|string|max:25',
+            'codice_fiscale' => 'required|string|max:25',
+            'data_nascita' => 'required|date',
+            'provincia_nascita' => 'required|string|max:50',
+            'comune_nascita' => 'required|string|max:50',
+            'provincia_residenza' => 'required|string|max:50',
+            'comune_residenza' => 'required|string|max:50',
+            'email' => 'required|email|max:255|unique:inquilini,email,' . $inquilino->id,
+            'numero_telefono' => 'required|string|max:20',
+            'data_subentro' => 'required|date',
+            'data_uscita' => 'nullable|date|after_or_equal:data_subentro',
+            'contratto_lavorativo' => 'required|string|max:255',
+            'numero_stanza' => 'nullable|integer',
+        ]);
+
+        $inquilino->update($request->only(['nome', 'cognome', 'carta_identità', 'codice_fiscale', 'data_nascita', 'provincia_nascita', 'comune_nascita', 'provincia_residenza', 'comune_residenza', 'email', 'numero_telefono', 'data_subentro', 'data_uscita', 'contratto_lavorativo', 'numero_stanza']));
+
+        return view('inquilini.inquilino', ['inquilino' => $inquilino]);
+}
+
 
     /**
      * Remove the specified resource from storage.
