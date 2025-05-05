@@ -53,17 +53,26 @@ class ImmobiliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(immobili $immobili)
+    public function edit($id)
     {
-        //
+        $immobile = Immobili::where('id', $id)->first();
+        return view('immobili.edit', ['immobile' => $immobile]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateimmobiliRequest $request, immobili $immobili)
+    public function update(Request $request, immobili $immobile)
     {
-        //
+        $request->validate([
+            'provincia' => 'required|string|max:255',
+            'comune' => 'required|string|max:255',
+            'via' => 'required|string|max:255',
+            'civico' => 'required|integer',
+        ]);
+
+        $immobile->update($request->only(['provincia', 'comune', 'via', 'civico']));
+        return view('immobili.immobile', ['immobile' => $immobile]);
     }
 
     /**

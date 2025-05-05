@@ -22,6 +22,8 @@ Route::resource('immobili', ImmobiliController::class);
 Route::delete('/immobili/{id}', [ImmobiliController::class, 'destroy'])->name('immobili.delete');
 Route::get('immobili/{id}', [ImmobiliController::class, 'show'])->name('immobili.immobile');
 Route::get('/immobili/uscita/{inquilino_id}/{immobile_id}/{data}', [ImmobiliController::class, 'uscita'])->name('immobili.uscita');
+Route::get('immobili/edit/{id}', [ImmobiliController::class, 'edit'])->name('immobili.edit');
+Route::put('/immobili/{immobile}', [ImmobiliController::class, 'update'])->name('immobili.update');
 
 //Gestione inquilini
 Route::get('inquilini/index', [InquiliniController::class, 'index'])->name('inquilini.index');

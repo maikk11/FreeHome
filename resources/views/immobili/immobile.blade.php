@@ -2,6 +2,10 @@
 <h1 class="titolo_pagina">{{$immobile->comune}} {{$immobile->via}} {{$immobile->civico}}</h1>
 <h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>
+<div>
+    <a type="button" class="btn btn-primary" style="width: 100px; margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Modifica</a>
+</div>
 <h2 class="titolo_pagina" style="margin-top:2%">INQUILINI</h2>
 <a type="button" class="btn btn-success" href="{{ route('inquilini.create',['id' => $immobile->id])}}" style="margin-left:1%">Inserisci inquilino</a>
 @foreach($inquilini as $inquilino)
