@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\immobili;
 use App\Models\inquilini;
+use App\Models\stanze;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
@@ -80,7 +81,7 @@ class ImmobiliController extends Controller
      */
     public function destroy(string $id)
     {
-        Inquilini::where('immobile_id', $id)->delete();
+        Stanze::where('immobile_id', $id)->delete();
         Immobili::where('id', $id)->delete();
         return redirect()->back();
     }

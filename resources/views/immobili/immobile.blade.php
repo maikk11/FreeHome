@@ -3,8 +3,10 @@
 <h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>
 <div>
-<a type="button" class="btn btn-primary" style="margin-left:1%;
-    margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Crea stanza</a>
+    <a type="button" class="btn btn-primary" style="margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.index', ['id' => $immobile->id]) }}">Visualizza stanze</a>
+    <a type="button" class="btn btn-primary" style="margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.create', ['id' => $immobile->id]) }}">Crea stanza</a>
     <a type="button" class="btn btn-primary" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Modifica immobile</a>
 </div>

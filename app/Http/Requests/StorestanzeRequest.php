@@ -28,7 +28,10 @@ class StorestanzeRequest extends FormRequest
     }
     public function messages(){
         return[
-
+            'nome_stanza.required' => 'Inserire nome stanza',
+            'nome_stanza.max' => 'Il nome può essere lungo massimo 255 caratteri',
+            'prezzo_affitto.required' => 'Inserire prezzo affitto',
+            'prezzo_affitto.max' => 'Il prezzo può essere lungo 10 caratteri',
         ];
     }
 }

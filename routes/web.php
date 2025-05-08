@@ -46,3 +46,5 @@ Route::get('stanze/index/{id}', [StanzeController::class, 'index'])->name('stanz
 Route::delete('stanze/destroy/{id}', [StanzeController::class, 'destroy'])->name('stanze.delete');
 Route::get('stanze/edit/{id}', [StanzeController::class, 'edit'])->name('stanze.edit');
 Route::put('/stanze/{stanza}', [StanzeController::class, 'update'])->name('stanze.update');
+Route::get('/stanze/{id}', [StanzeController::class, 'create'])->name('stanze.create');
+Route::post('stanze/store/{id}', [StanzeController::class, 'store'])->name('stanze.store');
