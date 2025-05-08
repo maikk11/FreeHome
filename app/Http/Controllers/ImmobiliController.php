@@ -62,17 +62,17 @@ class ImmobiliController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, immobili $immobile)
+    public function update(Request $request, $id)
     {
+        $immobile = Immobili::where('id', $id)->first();
         $request->validate([
             'provincia' => 'required|string|max:255',
             'comune' => 'required|string|max:255',
             'via' => 'required|string|max:255',
             'civico' => 'required|integer',
         ]);
-
         $immobile->update($request->only(['provincia', 'comune', 'via', 'civico']));
-        return view('immobili.immobile', ['immobile' => $immobile]);
+        return $this->show($id);
     }
 
     /**

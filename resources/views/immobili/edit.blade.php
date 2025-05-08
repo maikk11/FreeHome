@@ -2,7 +2,7 @@
     <h1 class="titolo_pagina">Modifica Profilo</h1>
 
     <div class="container" style="max-width: 600px; margin-top: 30px; background-color:lightgray; padding: 20px; border-radius: 15px;">
-        <form method="POST" action="{{ route('immobili.update', ['immobile' => $immobile]) }}">
+        <form method="POST" action="{{ route('immobili.update', ['immobile' => $immobile->id]) }}">
             @csrf
             @method('PUT')
             <div class="mb-3">
