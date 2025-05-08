@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImmobiliController;
 use App\Http\Controllers\InquiliniController;
 use App\Http\Controllers\ProfiliController;
+use App\Http\Controllers\StanzeController;
 
 Route::get('/', function () {
     return view('index');
@@ -39,3 +40,9 @@ Route::get('profili/index/{id}', [ProfiliController::class, 'index'])->name('pro
 Route::delete('profili/destroy/{id}', [ProfiliController::class, 'destroy'])->name('profili.delete');
 Route::get('profili/edit/{id}', [ProfiliController::class, 'edit'])->name('profili.edit');
 Route::put('/profili/{profilo}', [ProfiliController::class, 'update'])->name('profili.update');
+
+//Gestione stanze
+Route::get('stanze/index/{id}', [StanzeController::class, 'index'])->name('stanze.index');
+Route::delete('stanze/destroy/{id}', [StanzeController::class, 'destroy'])->name('stanze.delete');
+Route::get('stanze/edit/{id}', [StanzeController::class, 'edit'])->name('stanze.edit');
+Route::put('/stanze/{stanza}', [StanzeController::class, 'update'])->name('stanze.update');
