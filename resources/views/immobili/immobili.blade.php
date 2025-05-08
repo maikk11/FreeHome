@@ -1,7 +1,7 @@
 <x-main-layout>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <h1 class="titolo_pagina">IMMOBILI</h1>
-    <a type="button" class="btn btn-success" href="{{ route('immobili.create')}}" style="margin-left: 1%; margin-top: 1%;">Inserisci immobile</a>
+    <a type="button" class="btn btn-primary" href="{{ route('immobili.create')}}" style="margin-left: 1%; margin-top: 1%;">Inserisci immobile</a>
     @foreach($immobili as $immobile)
     <div style="background: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left: 1%; margin-top: 2%;">
       <div style="padding: 20px; background-color:lightgray;">

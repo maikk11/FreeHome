@@ -11,12 +11,11 @@
     </div>
     <div style="position: absolute; left:10%; margin-top:1%">
         <a type="button" class="btn btn-primary" style="width: 100px;" href="{{ route('profili.edit', ['id' => $profilo->id]) }}">Modifica</a>
-        <form method="POST" action="{{ route('profili.delete', ['id' => auth()->user()->id]) }}">
+        <form method="POST" action="{{ route('profili.delete', ['id' => auth()->user()->id]) }}" style="display:inline;">
         @csrf
         @method('DELETE')
-            <button class="btn btn"
-            style="background: #e80808; width:max-content; border-radius:10px; color:white; margin-left:8px"
-            type="submit">Elimina</button>
+            <button class="btn btn-danger"
+            style="width:max-content; border-radius:10px; color:white; margin-left:8px" type="submit">Elimina</button>
         </form>
     </div>
 </x-main-layout>

@@ -35,10 +35,15 @@ class InquiliniController extends Controller
         $user_id = auth()->id();
         $validated = $request->validated();
         $validated['user_id'] = $user_id;
-        $validated['immobile_id'] = $id_immobile;
+        if ($id_immobile !== '0') {
+            $validated['immobile_id'] = $id_immobile;
+            $immobile = Immobili::findOrFail($id_immobile);
+            $immobile->incrementaLocaliAffittati();
+        }
+        //$validated['immobile_id'] = $id_immobile;
         Inquilini::create($validated);
-        $immobile = Immobili::findOrFail($id_immobile);
-        $immobile->incrementaLocaliAffittati();
+        //$immobile = Immobili::findOrFail($id_immobile);
+        //$immobile->incrementaLocaliAffittati();
         return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');
     }
 
