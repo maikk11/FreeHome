@@ -68,10 +68,10 @@ class ImmobiliController extends Controller
         $request->validate([
             'provincia' => 'required|string|max:255',
             'comune' => 'required|string|max:255',
-            'via' => 'required|string|max:255',
+            'indirizzo' => 'required|string|max:255',
             'civico' => 'required|integer',
         ]);
-        $immobile->update($request->only(['provincia', 'comune', 'via', 'civico']));
+        $immobile->update($request->only(['provincia', 'comune', 'indirizzo', 'civico']));
         return $this->show($id);
     }
 

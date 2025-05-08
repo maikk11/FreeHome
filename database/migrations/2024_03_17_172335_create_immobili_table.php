@@ -16,10 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('provincia', 2);
             $table->string('comune', 50);
-            $table->string('via', 50);
+            $table->string('indirizzo', 50);
             $table->integer('civico');
-            $table->decimal('prezzo_affitto');
-            $table->integer('locali_affittabili');
+            $table->integer('locali_affittabili')->nullable();
             $table->integer('locali_affittati')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

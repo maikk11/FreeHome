@@ -9,7 +9,7 @@ class immobili extends Model
 {
     use HasFactory;
     protected $table = 'immobili';
-    protected $fillable = ['provincia', 'comune', 'via', 'civico', 'prezzo_affitto', 'locali_affittabili', 'locali_affittati', 'user_id'];
+    protected $fillable = ['provincia', 'comune', 'indirizzo', 'civico', 'locali_affittabili', 'locali_affittati', 'user_id'];
 
     public function decrementaLocaliAffittati()
     {

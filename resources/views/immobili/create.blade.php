@@ -17,23 +17,13 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Indirizzo</label>
-            <input type="text" class="form-control" id="via" name="via" value="{{ old('via') }}">
-            @error('via') <span class="small text-danger">{{$message}}</span>@enderror
+            <input type="text" class="form-control" id="indirizzo" name="indirizzo" value="{{ old('indirizzo') }}">
+            @error('indirizzo') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <div class="mb-3">
             <label class="form-label">Civico</label>
             <input type="number" class="form-control" id="civico" name="civico" value="{{ old('civico') }}">
             @error('civico') <span class="small text-danger">{{$message}}</span>@enderror
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Prezzo di affitto</label>
-            <input type="number" class="form-control" id="prezzo_affitto" name="prezzo_affitto" value="{{ old('prezzo_affitto') }}">
-            @error('prezzo_affitto') <span class="small text-danger">{{$message}}</span>@enderror
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Locali affittabili</label>
-            <input type="number" class="form-control" id="locali_affittabili" name="locali_affittabili" value="{{ old('locali_affittabili') }}">
-            @error('locali_affittabili') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
     </form>

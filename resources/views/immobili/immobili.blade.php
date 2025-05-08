@@ -6,7 +6,7 @@
     <div style="background: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left: 1%; margin-top: 2%;">
       <div style="padding: 20px; background-color:lightgray;">
         <h2 style="margin: 0 0 10px; font-size: 24px;">Comune: {{ $immobile->comune }}</h2>
-        <h2 style="margin: 0 0 10px; font-size: 24px;">Indirizzo: {{$immobile->via}} {{$immobile->civico}}</h2>
+        <h2 style="margin: 0 0 10px; font-size: 24px;">Indirizzo: {{$immobile->indirizzo}} {{$immobile->civico}}</h2>
         <a type="button" class="btn btn-success" href="{{ route('immobili.immobile', ['id' => $immobile->id])}}" style="width: 100px;">Entra</a>
         <form id="delete-form-{{ $immobile->id }}" action="{{ route('immobili.delete', ['id' => $immobile->id]) }}" method="POST" style="display:inline;">
                 @csrf

@@ -24,10 +24,8 @@ class StoreimmobiliRequest extends FormRequest
         return [
             'provincia'=>'required|max:2',
             'comune'=>'required|max:50',
-            'via'=>'required|max:50',
+            'indirizzo'=>'required|max:50',
             'civico'=>'required',
-            'prezzo_affitto'=>'required',
-            'locali_affittabili'=>'required',
         ];
     }
     public function messages(){
@@ -36,11 +34,9 @@ class StoreimmobiliRequest extends FormRequest
             'provincia.max'=>'La provincia puo essere massimo di 2 caratteri',
             'comune.required'=>'Inserire comune',
             'comune.max'=>'Il comune può essere di massimo 50 caratteri',
-            'via.required'=>'Inserire via',
-            'via.max'=>'La via può essere di massimo 50 caratteri',
+            'indirizzo.required'=>'Inserire indirizzo',
+            'indirizzo.max'=>'La via può essere di massimo 50 caratteri',
             'civico.required'=>'Inserire civico',
-            'prezzo_affitto.required'=>'Inserire prezzo affitto',
-            'locali_affittabli.required'=>'Inserire locali affittabili',
         ];
     }
 }

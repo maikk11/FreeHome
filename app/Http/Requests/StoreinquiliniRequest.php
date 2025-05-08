@@ -27,13 +27,13 @@ class StoreinquiliniRequest extends FormRequest
             'carta_identità' => 'required|max:25',
             'codice_fiscale' => 'required|max:25',
             'data_nascita' => 'required|date',
-            'provincia_nascita' => 'required|max:50',
+            'provincia_nascita' => 'required|max:2',
             'comune_nascita' => 'required|max:50',
-            'provincia_residenza' => 'required|max:50',
+            'provincia_residenza' => 'required|max:2',
             'comune_residenza' => 'required|max:50',
             'email' => 'required|email|max:255',
             'numero_telefono' => 'required|max:20',
-            'data_subentro' => 'required|date',
+            'data_subentro' => 'date',
             'contratto_lavorativo' => 'required|max:255',
         ];
     }

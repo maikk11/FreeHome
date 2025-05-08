@@ -19,18 +19,19 @@ return new class extends Migration
             $table->string('carta_identità', 25);
             $table->string('codice_fiscale', 25);
             $table->date('data_nascita');
-            $table->string('provincia_nascita', 50);
+            $table->string('provincia_nascita', 2);
             $table->string('comune_nascita', 50);
-            $table->string('provincia_residenza', 50);
+            $table->string('provincia_residenza', 2);
             $table->string('comune_residenza', 50);
             $table->string('email')->unique();
             $table->string('numero_telefono', 20);
-            $table->date('data_subentro');
+            $table->date('data_subentro')->nullable();
             $table->date('data_uscita')->nullable();
             $table->string('contratto_lavorativo', 255);
-            $table->integer('numero_stanza')->nullable();
             $table->unsignedBigInteger('immobile_id')->nullable();
             $table->foreign('immobile_id')->references('id')->on('immobili')->onDelete('set null');
+            $table->unsignedBigInteger('stanza_id')->nullable();
+            $table->foreign('stanza_id')->references('id')->on('stanze')->onDelete('set null');
         });
     }
 
