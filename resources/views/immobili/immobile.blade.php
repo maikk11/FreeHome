@@ -3,16 +3,23 @@
 <h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>
 <div>
-    <a type="button" class="btn btn-primary" style="margin-left:1%;
-    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.index', ['id' => $immobile->id]) }}">Visualizza stanze</a>
-    <a type="button" class="btn btn-primary" style="margin-left:1%;
-    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.create', ['id' => $immobile->id]) }}">Crea stanza</a>
+<a type="button" class="btn btn-primary" style="margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Spese e ricavi</a>
     <a type="button" class="btn btn-primary" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Modifica immobile</a>
 </div>
+<div>
+<h2 class="titolo_pagina" style="margin-top:2%">STANZE</h2>
+<a type="button" class="btn btn-secondary" style="margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.index', ['id' => $immobile->id]) }}">Visualizza stanze</a>
+    <a type="button" class="btn btn-secondary" style="margin-left:1%;
+    margin-top:1%; margin-bottom:1%" href="{{ route('stanze.create', ['id' => $immobile->id]) }}">Crea stanza</a>
+</div>
+<div>
 <h2 class="titolo_pagina" style="margin-top:2%">INQUILINI</h2>
 <a type="button" class="btn btn-warning" href="{{ route('inquilini.create',['id' => $immobile->id])}}" style="margin-left:1%">Assegna inquilino</a>
 <a type="button" class="btn btn-warning" href="{{ route('inquilini.create',['id' => $immobile->id])}}" style="margin-left:1%">Crea inquilino</a>
+</div>
 @foreach($inquilini as $inquilino)
 <div style="border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left:1%; margin-top:1%">
     <div style="padding: 20px; background-color:lightgray;">
