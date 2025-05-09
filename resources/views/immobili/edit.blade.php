@@ -16,8 +16,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="via" class="form-label"><strong>Via</strong></label>
-                <input type="text" class="form-control" id="via" name="via" value="{{ old('via', $immobile->via) }}" required>
+                <label for="via" class="form-label"><strong>Indirizzo</strong></label>
+                <input type="text" class="form-control" id="indirizzo" name="indirizzo" value="{{ old('indirizzo', $immobile->indirizzo) }}" required>
             </div>
 
             <div class="mb-3">
