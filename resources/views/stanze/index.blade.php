@@ -5,6 +5,7 @@
       <div style="padding: 20px; background-color:lightgray;">
         <h2 style="margin: 0 0 10px; font-size: 24px;">Nome stanza: {{ $stanza->nome_stanza }}</h2>
         <h2 style="margin: 0 0 10px; font-size: 24px;">Prezzo affitto: {{$stanza->prezzo_affitto}} €</h2>
+        <a type="button" class="btn btn-primary" style="width: 100px; margin-top:1%; margin-bottom:1%" href="{{ route('stanze.edit', ['id' => $stanza->id]) }}">Modifica</a>
         <form action="{{ route('stanze.delete', ['id' => $stanza->id]) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')

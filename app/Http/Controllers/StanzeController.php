@@ -49,15 +49,21 @@ class StanzeController extends Controller
      */
     public function edit($id)
     {
-
+        $stanza = Stanze::where('id', $id)->first();
+        return view('stanze.edit', ['stanza' => $stanza]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Stanze $stanza)
     {
-
+        $request->validate([
+            'nome_stanza' => 'required|string|max:255',
+            'prezzo_affitto' => 'required|integer',
+        ]);
+        $stanza->update($request->only(['nome_stanza', 'prezzo_affitto']));
+        return $this->index($stanza->immobile_id);
     }
 
     /**
