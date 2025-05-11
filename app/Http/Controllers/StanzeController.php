@@ -69,8 +69,10 @@ class StanzeController extends Controller
         $request->validate([
             'nome_stanza' => 'required|string|max:255',
             'prezzo_affitto' => 'required|integer',
+            'metri_quadri' => 'required|integer',
+            'flag_balcone' => 'required|in:0,1,2',
         ]);
-        $stanza->update($request->only(['nome_stanza', 'prezzo_affitto']));
+        $stanza->update($request->only(['nome_stanza', 'prezzo_affitto', 'metri_quadri', 'flag_balcone']));
         return $this->index($stanza->immobile_id);
     }
 

@@ -15,6 +15,31 @@
             <input type="number" class="form-control" id="prezzo_affitto" name="prezzo_affitto" value="{{ old('prezzo_affitto') }}">
             @error('prezzo_affitto') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
+         <div class="mb-3">
+            <label class="form-label">Metri quadri</label>
+            <input type="number" class="form-control" id="metri_quadri" name="metri_quadri" value="{{ old('metri_quadri') }}">
+            @error('metri_quadri') <span class="small text-danger">{{$message}}</span>@enderror
+        </div>
+        <div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flag_balcone" id="balcone_0" value="0" checked>
+                <label class="form-check-label" for="balcone_0">
+                No balcone
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flag_balcone" id="balcone_1" value="1">
+                <label class="form-check-label" for="balcone_1">
+                Balcone in comune
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flag_balcone" id="balcone_2" value="2">
+                <label class="form-check-label" for="balcone_2">
+                Balcone privato
+                </label>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
     </form>
 </x-main-layout>

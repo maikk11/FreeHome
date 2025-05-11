@@ -9,5 +9,5 @@ class stanze extends Model
 {
     use HasFactory;
     protected $table = 'stanze';
-    protected $fillable = ['nome_stanza', 'prezzo_affitto', 'immobile_id'];
+    protected $fillable = ['nome_stanza', 'prezzo_affitto', 'metri_quadri', 'flag_balcone','immobile_id'];
 }

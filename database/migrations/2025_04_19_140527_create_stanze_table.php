@@ -16,6 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome_stanza', 255);
             $table->decimal('prezzo_affitto');
+            $table->integer('metri_quadri');
+            $table->integer('flag_balcone');
             $table->unsignedBigInteger('immobile_id');
             $table->foreign('immobile_id')->references('id')->on('immobili');
         });
