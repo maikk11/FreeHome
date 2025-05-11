@@ -19,4 +19,12 @@ class immobili extends Model
     {
         $this->increment('locali_affittati');
     }
+
+    public function incrementaLocali(){
+        $this->increment('locali_affittabili');
+    }
+
+    public function decrementaLocali(){
+        $this->decrement('locali_affittabili');
+    }
 }

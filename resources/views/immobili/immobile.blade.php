@@ -1,6 +1,6 @@
 <x-main-layout>
 <h1 class="titolo_pagina">{{$immobile->comune}} {{$immobile->indirizzo}} {{$immobile->civico}}</h1>
-<h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili}}</h3>
+<h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili ?? 0}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>
 <div>
 <a type="button" class="btn btn-primary" style="margin-left:1%;
@@ -17,7 +17,7 @@
 </div>
 <div>
 <h2 class="titolo_pagina" style="margin-top:2%">INQUILINI</h2>
-<a type="button" class="btn btn-warning" href="{{ route('inquilini.create',['id' => $immobile->id])}}" style="margin-left:1%">Assegna inquilino</a>
+<a type="button" class="btn btn-warning" href="{{ route('inquilini.index',['id' => $immobile->id])}}" style="margin-left:1%">Assegna inquilino</a>
 <a type="button" class="btn btn-warning" href="{{ route('inquilini.create',['id' => $immobile->id])}}" style="margin-left:1%">Crea inquilino</a>
 </div>
 @foreach($inquilini as $inquilino)

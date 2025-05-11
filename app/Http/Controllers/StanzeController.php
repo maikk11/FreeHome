@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorestanzeRequest;
 use App\Models\stanze;
+use App\Models\immobili;
 
 class StanzeController extends Controller
 {
@@ -33,6 +34,13 @@ class StanzeController extends Controller
         $validated = $request->validated();
         $validated['immobile_id'] = $immobile_id;
         Stanze::create($validated);
+        $immobile = Immobili::findOrFail($immobile_id);
+        if($immobile->locali_affittabili==NULL){
+            Immobili::where('id', $immobile_id)->update(['locali_affittabili' => 1]);
+        }
+        else{
+            $immobile->incrementaLocali();
+        }
         return redirect()->back()->with('success', 'Stanza inserita correttamente.');
     }
 
@@ -71,6 +79,11 @@ class StanzeController extends Controller
      */
     public function destroy(string $id)
     {
+        $immobile_id = Stanze::where('id', $id)->value('immobile_id');
+        $immobile = Immobili::findOrFail($immobile_id);
+        if($immobile->locali_affittabili>0){
+            $immobile->decrementaLocali();
+        }
         Stanze::where('id', $id)->delete();
         return redirect()->back();
     }

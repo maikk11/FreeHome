@@ -75,11 +75,6 @@
                 <input type="text" class="form-control" id="contratto_lavorativo" name="contratto_lavorativo" value="{{ old('contratto_lavorativo', $inquilino->contratto_lavorativo) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="numero_stanza" class="form-label"><strong>Numero Stanza</strong></label>
-                <input type="number" class="form-control" id="numero_stanza" name="numero_stanza" value="{{ old('numero_stanza', $inquilino->numero_stanza) }}">
-            </div>
-
             <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-success">Salva</button>
                 <a href="{{ route('inquilini.inquilino', ['id' => $inquilino->id]) }}"  class="btn btn-secondary">Annulla</a>

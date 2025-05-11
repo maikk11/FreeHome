@@ -17,7 +17,7 @@
         <a class="nav-link" href="{{ route('immobili.index') }}">Immobili</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('inquilini.index') }}">Inquilini</a>
+        <a class="nav-link" href="{{ route('inquilini.index', ['id' => 0]) }}">Inquilini</a>
       </li>
       @endauth
     </ul>

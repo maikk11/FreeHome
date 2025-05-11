@@ -27,10 +27,10 @@ Route::get('immobili/edit/{id}', [ImmobiliController::class, 'edit'])->name('imm
 Route::put('/immobili/{immobile}', [ImmobiliController::class, 'update'])->name('immobili.update');
 
 //Gestione inquilini
-Route::get('inquilini/index', [InquiliniController::class, 'index'])->name('inquilini.index');
+Route::get('inquilini/index/{id?}', [InquiliniController::class, 'index'])->name('inquilini.index');
 Route::get('inquilini/{id}', [InquiliniController::class, 'create'])->name('inquilini.create');
 Route::post('inquilini/store/{id}', [InquiliniController::class, 'store'])->name('inquilini.store');
-Route::get('inquilini/index/{id}', [InquiliniController::class, 'show'])->name('inquilini.inquilino');
+Route::get('inquilini/show/{id}', [InquiliniController::class, 'show'])->name('inquilini.inquilino');
 Route::delete('inquilini/destroy/{id}', [InquiliniController::class, 'destroy'])->name('inquilini.delete');
 Route::get('inquilini/edit/{id}', [InquiliniController::class, 'edit'])->name('inquilini.edit');
 Route::put('/inquilini/{inquilino}', [InquiliniController::class, 'update'])->name('inquilini.update');

@@ -13,10 +13,15 @@ class InquiliniController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id=0)
     {
-        $inquilini = inquilini::get();
-        return view('inquilini.index', ['inquilini' => $inquilini]);
+        if($id==0){
+            $inquilini = inquilini::get();
+        }
+        else{
+            $inquilini = Inquilini::whereNull('immobile_id')->get();
+        }
+        return view('inquilini.index', ['inquilini' => $inquilini, 'immobile_id' => $id]);
     }
 
     /**
@@ -35,10 +40,16 @@ class InquiliniController extends Controller
         $user_id = auth()->id();
         $validated = $request->validated();
         $validated['user_id'] = $user_id;
-        if ($id_immobile !== '0') {
+        $validated['immobile_id'] = null;
+        if ($id_immobile != 0) {
             $validated['immobile_id'] = $id_immobile;
             $immobile = Immobili::findOrFail($id_immobile);
-            $immobile->incrementaLocaliAffittati();
+            if($immobile->locali_affittati==NULL){
+               Immobili::where('id', $id_immobile)->update(['locali_affittati' => 1]);
+            }
+            else{
+                $immobile->incrementaLocaliAffittati();
+            }
         }
         Inquilini::create($validated);
         return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');
