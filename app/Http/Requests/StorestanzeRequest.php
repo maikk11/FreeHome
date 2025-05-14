@@ -25,7 +25,6 @@ class StorestanzeRequest extends FormRequest
             'nome_stanza'=>'required|max:255',
             'prezzo_affitto'=>'required',
             'metri_quadri'=>'required',
-            'flag_balcone'=>'required',
         ];
     }
     public function messages(){
@@ -35,7 +34,6 @@ class StorestanzeRequest extends FormRequest
             'prezzo_affitto.required' => 'Inserire prezzo affitto',
             'prezzo_affitto.max' => 'Il prezzo può essere lungo 10 caratteri',
             'metri_quadri.required' => 'Inserire metri quadri stanza',
-            'flag_balcone.required' => 'Inserire flag balcone',
         ];
     }
 }

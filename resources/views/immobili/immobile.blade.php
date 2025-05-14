@@ -2,6 +2,7 @@
 <h1 class="titolo_pagina">{{$immobile->comune}} {{$immobile->indirizzo}} {{$immobile->civico}}</h1>
 <h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili ?? 0}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>
+<a type="submit" class="btn btn-secondary" href="{{ url('immobili') }}" style="margin-left:1%">Torna indietro</a>
 <div>
 <a type="button" class="btn btn-primary" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Spese e ricavi</a>
@@ -10,9 +11,9 @@
 </div>
 <div>
 <h2 class="titolo_pagina" style="margin-top:2%">STANZE</h2>
-<a type="button" class="btn btn-secondary" style="margin-left:1%;
+<a type="button" class="btn btn-info" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('stanze.index', ['id' => $immobile->id]) }}">Visualizza stanze</a>
-    <a type="button" class="btn btn-secondary" style="margin-left:1%;
+    <a type="button" class="btn btn-info" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('stanze.create', ['id' => $immobile->id]) }}">Crea stanza</a>
 </div>
 <div>
@@ -30,7 +31,6 @@
     </div>
 </div>
 @endforeach
-
 <script>
 // Seleziona tutti i bottoni con la classe 'uscita-button'
 document.querySelectorAll('.uscita-button').forEach(button => {

@@ -41,5 +41,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
+        <button type="submit" class="btn btn-secondary" onclick="window.history.back();">Annulla</button>
     </form>
 </x-main-layout>

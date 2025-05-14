@@ -85,6 +85,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
+    <button type="submit" class="btn btn-secondary" style="margin-bottom:2%" onclick="window.history.back();">Annulla</button>
 </form>
 
 </x-main-layout>

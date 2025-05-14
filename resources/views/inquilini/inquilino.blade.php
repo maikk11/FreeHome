@@ -21,5 +21,6 @@
     </div>
     <div>
         <a type="button" class="btn btn-primary" style="width: 100px; margin-left:50%; margin-top:1%; margin-bottom:1%" href="{{ route('inquilini.edit', ['id' => $inquilino->id]) }}">Modifica</a>
+        <button class="btn btn-secondary" style="width: 100px; margin-left:50%; margin-top:1%; margin-bottom:1%" onclick="window.history.back();">Torna indietro</button>
     </div>
 </x-main-layout>
