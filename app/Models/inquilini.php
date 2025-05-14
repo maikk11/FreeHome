@@ -25,7 +25,9 @@ class inquilini extends Model
         'data_subentro',
         'data_uscita',
         'contratto_lavorativo',
+        'user_id',
         'immobile_id',
+        'stanza_id',
     ];
 
     public function uscita($dataUscita)

@@ -28,6 +28,8 @@ return new class extends Migration
             $table->date('data_subentro')->nullable();
             $table->date('data_uscita')->nullable();
             $table->string('contratto_lavorativo', 255);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->unsignedBigInteger('immobile_id')->nullable();
             $table->foreign('immobile_id')->references('id')->on('immobili')->onDelete('set null');
             $table->unsignedBigInteger('stanza_id')->nullable();

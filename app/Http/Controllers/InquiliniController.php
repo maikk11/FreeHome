@@ -16,10 +16,13 @@ class InquiliniController extends Controller
     public function index($id=0)
     {
         if($id==0){
-            $inquilini = inquilini::get();
+            $inquilini = Inquilini::where('user_id', auth()->id())->get();
         }
         else{
-            $inquilini = Inquilini::whereNull('immobile_id')->get();
+            $inquilini = Inquilini::whereNull('immobile_id')
+            ->where('user_id', auth()->id())
+            ->get();
+
         }
         return view('inquilini.index', ['inquilini' => $inquilini, 'immobile_id' => $id]);
     }
