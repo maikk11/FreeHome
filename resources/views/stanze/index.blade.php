@@ -1,6 +1,6 @@
 <x-main-layout>
     <h1 class="titolo_pagina">STANZE</h1>
-    <a href="{{ url('immobili') }}" class="btn btn-primary">Torna a Nome Pagina</a>
+    <a href="{{ route('immobili.immobile', ['id' => $immobile_id]) }}" class="btn btn-secondary">Torna indietro</a>
 
     @foreach($stanze as $stanza)
     <div style="background: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left: 1%; margin-top: 2%;">

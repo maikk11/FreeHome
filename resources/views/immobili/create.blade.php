@@ -26,5 +26,6 @@
             @error('civico') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
+        <button type="submit" class="btn btn-secondary" onclick="window.history.back();">Torna indietro</button>
     </form>
 </x-main-layout>

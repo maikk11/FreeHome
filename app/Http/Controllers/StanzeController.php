@@ -15,7 +15,7 @@ class StanzeController extends Controller
     public function index($immobile_id)
     {
         $stanze = Stanze::where('immobile_id', $immobile_id)->get();
-        return view('stanze.index', ['stanze' => $stanze]);
+        return view('stanze.index', ['stanze' => $stanze, 'immobile_id'=>$immobile_id]);
     }
 
     /**

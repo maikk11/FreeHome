@@ -2,6 +2,8 @@
     <h1 class="titolo_pagina">INQUILINI</h1>
     @if($immobile_id==0)
     <a type="button" class="btn btn-primary" href="{{ route('inquilini.create','0')}}" style="margin-left:1%; margin-bottom:1%">Inserisci inquilino</a>
+    @else
+    <a href="{{ route('immobili.immobile', ['id' => $immobile_id]) }}" class="btn btn-secondary" style="margin-left:1%">Torna indietro</a>
     @endif
     @foreach($inquilini as $inquilino)
     <div style="background: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left:1%; margin-top: 2%;">

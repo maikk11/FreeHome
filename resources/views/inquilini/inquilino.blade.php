@@ -20,7 +20,15 @@
         </ul>
     </div>
     <div>
-        <a type="button" class="btn btn-primary" style="width: 100px; margin-left:50%; margin-top:1%; margin-bottom:1%" href="{{ route('inquilini.edit', ['id' => $inquilino->id]) }}">Modifica</a>
-        <button class="btn btn-secondary" style="width: 100px; margin-left:50%; margin-top:1%; margin-bottom:1%" onclick="window.history.back();">Torna indietro</button>
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 1%; margin-bottom: 1%;">
+        <a type="button" class="btn btn-primary" style="width: 100px;" href="{{ route('inquilini.edit', ['id' => $inquilino->id]) }}">
+        Modifica
+        </a>
+
+        <a type="button" class="btn btn-secondary" style="width: 100px;" href="{{ route('inquilini.index')}}">
+        Torna indietro
+        </a>
+    </div>
+
     </div>
 </x-main-layout>
