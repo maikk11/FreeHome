@@ -25,6 +25,7 @@ class StorestanzeRequest extends FormRequest
             'nome_stanza'=>'required|max:255',
             'prezzo_affitto'=>'required',
             'metri_quadri'=>'required',
+            'flag_balcone'=>'required',
         ];
     }
     public function messages(){

@@ -48,3 +48,4 @@ Route::get('stanze/edit/{id}', [StanzeController::class, 'edit'])->name('stanze.
 Route::put('/stanze/{stanza}', [StanzeController::class, 'update'])->name('stanze.update');
 Route::get('/stanze/{id}', [StanzeController::class, 'create'])->name('stanze.create');
 Route::post('stanze/store/{id}', [StanzeController::class, 'store'])->name('stanze.store');
+Route::get('/stanze/storico/{id}', [StanzeController::class, 'storico'])->name('stanze.storico');

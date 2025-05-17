@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorestanzeRequest;
 use App\Models\stanze;
 use App\Models\immobili;
+use App\Models\inquilini;
 
 class StanzeController extends Controller
 {
@@ -84,8 +85,11 @@ class StanzeController extends Controller
         return redirect()->back();
     }
 
-    public function uscita($inquilino_id, $immobile_id, $data)
+    public function storico($id)
     {
-
+        //$immobile_id = Stanze::where('id', $id)->value('immobile_id');
+        $nome_stanza = Stanze::where('id', $id)->value('nome_stanza');
+        $inquilini = inquilini::where('stanza_id', $id)->get();
+        return view('stanze.storico', ['nome_stanza'=>$nome_stanza, 'inquilini'=>$inquilini]);
     }
 }
