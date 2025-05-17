@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class inquilini extends Model
+class storico_inquilini extends Model
 {
     use HasFactory;
-    protected $table = 'inquilini';
+    protected $table = 'storico_inquilini';
     protected $fillable = [
         'nome',
         'cognome',
@@ -24,19 +24,6 @@ class inquilini extends Model
         'numero_telefono',
         'data_subentro',
         'data_uscita',
-        'contratto_lavorativo',
-        'user_id',
-        'immobile_id',
         'stanza_id',
     ];
-
-    public function uscita($dataUscita)
-    {
-        $dataUscita = Carbon::createFromFormat('d-m-Y', $dataUscita)->format('Y-m-d');
-        $this->update([
-            'data_uscita' => $dataUscita,
-            'immobile_id' => null,
-        ]);
-        return $dataUscita;
-    }
 }

@@ -8,6 +8,7 @@ use App\Models\stanze;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
+use App\Models\storico_inquilini;
 
 class ImmobiliController extends Controller
 {
@@ -91,7 +92,22 @@ class ImmobiliController extends Controller
         $immobile = Immobili::findOrFail($immobile_id);
         $immobile->decrementaLocaliAffittati();
         $inquilino = Inquilini::findOrFail($inquilino_id);
-        $inquilino->uscita($data);
+        $data = $inquilino->uscita($data);
+        Storico_inquilini::create([
+            'nome'=>$inquilino->nome,
+            'cognome'=>$inquilino->cognome,
+            'carta_identità' => $inquilino->carta_identità,
+            'codice_fiscale' => $inquilino->codice_fiscale,
+            'data_nascita' => $inquilino->data_nascita,
+            'provincia_nascita' => $inquilino->provincia_nascita,
+            'comune_nascita' => $inquilino->comune_nascita,
+            'provincia_residenza' => $inquilino->provincia_residenza,
+            'comune_residenza' => $inquilino->comune_residenza,
+            'email' => $inquilino->email,
+            'numero_telefono' => $inquilino->numero_telefono,
+            'data_subentro' => $inquilino->data_subentro,
+            'data_uscita' => $data,
+        ]);
         return redirect()->back();
     }
 }
