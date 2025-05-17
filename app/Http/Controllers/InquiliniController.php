@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
 use App\Models\inquilini;
 use App\Models\immobili;
+use App\Models\stanze;
 
 class InquiliniController extends Controller
 {
@@ -32,7 +33,8 @@ class InquiliniController extends Controller
      */
     public function create(string $id)
     {
-        return view('inquilini.create', ['id' => $id]);
+        $stanze = Stanze::where('immobile_id', $id)->get();
+        return view('inquilini.create', ['id'=>$id, 'stanze'=>$stanze]);
     }
 
     /**
@@ -53,6 +55,9 @@ class InquiliniController extends Controller
             else{
                 $immobile->incrementaLocaliAffittati();
             }
+        }
+        else{
+            $validated['stanza_id'] = null;
         }
         Inquilini::create($validated);
         return redirect()->back()->with('success', 'Dati inquilino inseriti correttamente.');

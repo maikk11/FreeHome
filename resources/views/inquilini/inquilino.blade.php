@@ -15,7 +15,7 @@
             <li class="list-group-item"><strong>Data subentro: </strong>{{$inquilino->data_subentro}}</li>
             <li class="list-group-item"><strong>Data uscita: </strong>{{$inquilino->data_uscita}}</li>
             <li class="list-group-item"><strong>Contratto lavorativo: </strong>{{$inquilino->contratto_lavorativo}}</li>
-            <li class="list-group-item"><strong>Stanza: </strong>{{$inquilino->numero_stanza}}</li>
+            <li class="list-group-item"><strong>Stanza: </strong>{{$inquilino->stanza_id}}</li>
             <li class="list-group-item"><strong>Immobile: </strong>{{$inquilino->immobile_id}}</li>
         </ul>
     </div>

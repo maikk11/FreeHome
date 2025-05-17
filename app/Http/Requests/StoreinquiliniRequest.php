@@ -35,6 +35,7 @@ class StoreinquiliniRequest extends FormRequest
             'numero_telefono' => 'required|max:20',
             'data_subentro' => 'date',
             'contratto_lavorativo' => 'required|max:255',
+            'stanza_id' => 'required',
         ];
     }
     public function messages(){
@@ -67,6 +68,7 @@ class StoreinquiliniRequest extends FormRequest
             'data_uscita.date' => 'La data di uscita deve essere una data valida',
             'contratto_lavorativo.required' => 'Inserire il tipo di contratto lavorativo',
             'contratto_lavorativo.max' => 'Il contratto lavorativo può essere lungo massimo 255 caratteri',
+            'stanza_id.required' => 'Inserire stanza'
         ];
     }
 }

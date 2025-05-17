@@ -36,6 +36,7 @@ class inquilini extends Model
         $this->update([
             'data_uscita' => $dataUscita,
             'immobile_id' => null,
+            'stanza_id' => null,
         ]);
         return $dataUscita;
     }

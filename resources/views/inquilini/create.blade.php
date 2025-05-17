@@ -84,8 +84,22 @@
         @error('contratto_lavorativo') <span class="small text-danger">{{ $message }}</span>@enderror
     </div>
 
+    @if($id!=0)
+    <div class="mb-3">
+        <label class="form-label">Stanza</label>
+        <select name="stanza_id" id="stanza_id" class="form-control" required>
+        <option value="">-- Scegli una stanza --</option>
+        @foreach($stanze as $stanza)
+            <option value="{{ $stanza->id }}">{{ $stanza->nome_stanza }}</option>
+        @endforeach
+        </select>
+    </div>
+    @else
+    <input type="hidden" name="stanza_id" value=0>
+    @endif
+
     <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
-    <button type="submit" class="btn btn-secondary" style="margin-bottom:2%" onclick="window.history.back();">Annulla</button>
+    <button type="submit" class="btn btn-secondary" style="margin-bottom:2%" onclick="window.history.back();">Torna indietro</button>
 </form>
 
 </x-main-layout>

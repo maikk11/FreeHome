@@ -107,6 +107,7 @@ class ImmobiliController extends Controller
             'numero_telefono' => $inquilino->numero_telefono,
             'data_subentro' => $inquilino->data_subentro,
             'data_uscita' => $data,
+            'stanza_id' => $inquilino->stanza_id,
         ]);
         return redirect()->back();
     }
