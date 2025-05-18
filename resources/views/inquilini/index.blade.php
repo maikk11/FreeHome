@@ -10,7 +10,7 @@
       <div style="padding: 20px; background-color:lightgray;">
         <h2 style="margin: 0 0 10px; font-size: 24px;">{{ $inquilino->nome }} {{$inquilino->cognome}}</h2>
         @if($immobile_id==0)
-        <a type="button" class="btn btn-success" href="{{ route('inquilini.inquilino', ['id' => $inquilino->id])}}" style="width: 100px;">Anagrafica</a>
+        <a type="button" class="btn btn-success" href="{{ route('inquilini.inquilino', ['id' => $inquilino->id, 'provenienza'=>0])}}" style="width: 100px;">Anagrafica</a>
         <form id="delete-form-{{ $inquilino->id }}" action="{{ route('inquilini.delete', ['id' => $inquilino->id]) }}" method="POST"  style="display:inline;">
         @csrf
         @method('DELETE')

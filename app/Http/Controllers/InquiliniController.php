@@ -25,6 +25,7 @@ class InquiliniController extends Controller
             ->get();
 
         }
+        $provenienza = 0;
         return view('inquilini.index', ['inquilini' => $inquilini, 'immobile_id' => $id]);
     }
 
@@ -67,10 +68,10 @@ class InquiliniController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, $provenienza)
     {
         $inquilino = Inquilini::where('id', $id)->get()->first();
-        return view('inquilini.inquilino', ['inquilino' => $inquilino]);
+        return view('inquilini.inquilino', ['inquilino' => $inquilino, 'provenienza'=>$provenienza]);
     }
 
     /**

@@ -24,10 +24,15 @@
         <a type="button" class="btn btn-primary" style="width: 100px;" href="{{ route('inquilini.edit', ['id' => $inquilino->id]) }}">
         Modifica
         </a>
-
+        @if($provenienza==1)
+        <a type="button" class="btn btn-secondary" style="width: 100px;" href="{{ route('immobili.immobile', ['id'=>$inquilino->immobile_id])}}">
+        Torna indietro
+        </a>
+        @else
         <a type="button" class="btn btn-secondary" style="width: 100px;" href="{{ route('inquilini.index')}}">
         Torna indietro
         </a>
+        @endif
     </div>
 
     </div>

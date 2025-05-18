@@ -1,12 +1,15 @@
 <x-main-layout>
     @if(auth()->check() && auth()->user())
     <h1 class="titolo_pagina">Bentornato {{ auth()->user()->name }}</h1>
-    <a href="{{ route('immobili.index') }}" class="btn btn-primary">
-    Immobili
+    <div class="d-flex flex-column align-items-center justify-content-center text-center" style="margin-top: 5%;">
+    <a href="{{ route('immobili.index') }}" class="btn btn-secondary btn-lg mb-3 w-75 w-md-50">
+        Immobili
     </a>
-    <a href="{{ route('inquilini.index', ['id' => 0]) }}" class="btn btn-primary">
-    Inquilini
+    <a href="{{ route('inquilini.index', ['id' => 0]) }}" class="btn btn-secondary btn-lg w-75 w-md-50">
+        Inquilini
     </a>
+    </div>
+
     @else
     <h1 class="titolo_pagina">Benvenuto</h1>
     <form action="/login" method="POST" class="mt-5 mx-auto col-lg-6">
