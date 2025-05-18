@@ -27,7 +27,8 @@ class ImmobiliController extends Controller
      */
     public function create()
     {
-        return view('immobili.create');
+        $province = Immobili::province();
+        return view('immobili.create', ['province'=>$province]);
     }
 
     /**
@@ -58,7 +59,8 @@ class ImmobiliController extends Controller
     public function edit($id)
     {
         $immobile = Immobili::where('id', $id)->first();
-        return view('immobili.edit', ['immobile' => $immobile]);
+        $province = Immobili::province();
+        return view('immobili.edit', ['immobile' => $immobile, 'province'=>$province]);
     }
 
     /**

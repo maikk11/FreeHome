@@ -34,7 +34,8 @@ class InquiliniController extends Controller
     public function create(string $id)
     {
         $stanze = Stanze::where('immobile_id', $id)->get();
-        return view('inquilini.create', ['id'=>$id, 'stanze'=>$stanze]);
+        $province = Immobili::province();
+        return view('inquilini.create', ['id'=>$id, 'stanze'=>$stanze, 'province'=>$province]);
     }
 
     /**
@@ -78,7 +79,8 @@ class InquiliniController extends Controller
     public function edit($id)
     {
         $inquilino = Inquilini::where('id', $id)->first();
-        return view('inquilini.edit', ['inquilino' => $inquilino]);
+        $province = Immobili::province();
+        return view('inquilini.edit', ['inquilino' => $inquilino, 'province'=>$province]);
     }
 
     /**

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('immobili', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('provincia', 2);
+            $table->string('provincia', 25);
             $table->string('comune', 50);
             $table->string('indirizzo', 50);
             $table->integer('civico');

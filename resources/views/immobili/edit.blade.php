@@ -7,7 +7,12 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="provincia" class="form-label"><strong>Provincia</strong></label>
-                <input type="text" class="form-control" id="provincia" name="provincia" value="{{ old('provincia', $immobile->provincia) }}" maxlength="2" required>
+                 <select name="provincia" id="provincia" class="form-control" required>
+                <option value="">-- Scegli una provincia --</option>
+                @foreach($province as $provincia)
+                <option value="{{ $provincia }}" {{ (old('provincia', $immobile->provincia) == $provincia) ? 'selected' : '' }}>{{ $provincia }}</option>
+                @endforeach
+                </select>
             </div>
 
             <div class="mb-3">

@@ -22,7 +22,7 @@ class StoreimmobiliRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'provincia'=>'required|max:2',
+            'provincia'=>'required|max:25',
             'comune'=>'required|max:50',
             'indirizzo'=>'required|max:50',
             'civico'=>'required',
@@ -31,7 +31,6 @@ class StoreimmobiliRequest extends FormRequest
     public function messages(){
         return[
             'provincia.required'=>'Inserire provincia',
-            'provincia.max'=>'La provincia puo essere massimo di 2 caratteri',
             'comune.required'=>'Inserire comune',
             'comune.max'=>'Il comune può essere di massimo 50 caratteri',
             'indirizzo.required'=>'Inserire indirizzo',

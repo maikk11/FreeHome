@@ -7,7 +7,12 @@
         @csrf
         <div class="mb-3">
             <label class="form-label">Provincia</label>
-            <input type="text" class="form-control" id="provincia" name="provincia" value="{{ old('provincia') }}">
+            <select name="provincia" id="provincia" class="form-control" required>
+            <option value="">-- Scegli una provincia --</option>
+            @foreach($province as $provincia)
+            <option value="{{ $provincia }}">{{ $provincia }}</option>
+            @endforeach
+            </select>
             @error('provincia') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <div class="mb-3">

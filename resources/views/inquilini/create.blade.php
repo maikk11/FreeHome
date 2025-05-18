@@ -38,7 +38,12 @@
 
     <div class="mb-3">
         <label class="form-label">Provincia di Nascita</label>
-        <input type="text" class="form-control" id="provincia_nascita" name="provincia_nascita" value="{{ old('provincia_nascita') }}">
+        <select name="provincia_nascita" id="provincia_nascita" class="form-control" required>
+            <option value="">-- Scegli una provincia --</option>
+            @foreach($province as $provincia)
+            <option value="{{ $provincia }}">{{ $provincia }}</option>
+            @endforeach
+            </select>
         @error('provincia_nascita') <span class="small text-danger">{{ $message }}</span>@enderror
     </div>
 
@@ -50,7 +55,12 @@
 
     <div class="mb-3">
         <label class="form-label">Provincia di Residenza</label>
-        <input type="text" class="form-control" id="provincia_residenza" name="provincia_residenza" value="{{ old('provincia_residenza') }}">
+        <select name="provincia_residenza" id="provincia_residenza" class="form-control" required>
+            <option value="">-- Scegli una provincia --</option>
+            @foreach($province as $provincia)
+            <option value="{{ $provincia }}">{{ $provincia }}</option>
+            @endforeach
+        </select>
         @error('provincia_residenza') <span class="small text-danger">{{ $message }}</span>@enderror
     </div>
 

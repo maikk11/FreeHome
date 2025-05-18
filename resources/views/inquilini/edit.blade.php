@@ -32,7 +32,12 @@
 
             <div class="mb-3">
                 <label for="provincia_nascita" class="form-label"><strong>Provincia di Nascita</strong></label>
-                <input type="text" class="form-control" id="provincia_nascita" name="provincia_nascita" value="{{ old('provincia_nascita', $inquilino->provincia_nascita) }}" required>
+                <select name="provincia_nascita" id="provincia_nascita" class="form-control" required>
+                <option value="">-- Scegli una provincia --</option>
+                @foreach($province as $provincia)
+                <option value="{{ $provincia }}" {{ (old('provincia', $inquilino->provincia_nascita) == $provincia) ? 'selected' : '' }}>{{ $provincia }}</option>
+                @endforeach
+                </select>
             </div>
 
             <div class="mb-3">
@@ -42,7 +47,12 @@
 
             <div class="mb-3">
                 <label for="provincia_residenza" class="form-label"><strong>Provincia di Residenza</strong></label>
-                <input type="text" class="form-control" id="provincia_residenza" name="provincia_residenza" value="{{ old('provincia_residenza', $inquilino->provincia_residenza) }}" required>
+                <select name="provincia_residenza" id="provincia_residenza" class="form-control" required>
+                <option value="">-- Scegli una provincia --</option>
+                @foreach($province as $provincia)
+                <option value="{{ $provincia }}" {{ (old('provincia', $inquilino->provincia_residenza) == $provincia) ? 'selected' : '' }}>{{ $provincia }}</option>
+                @endforeach
+                </select>
             </div>
 
             <div class="mb-3">
