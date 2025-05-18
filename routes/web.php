@@ -57,3 +57,6 @@ Route::get('speseRicavi/index/{id}', [SpeseRicaviController::class, 'index'])->n
 
 //gestione causali spese e ricavi
 Route::get('causaliSpeseRicavi/index', [CausaliSpeseRicaviController::class, 'index'])->name('causaliSpeseRicavi.index');
+Route::get('/causaliSpeseRicavi/create', [CausaliSpeseRicaviController::class, 'create'])->name('causaliSpeseRicavi.create');
+Route::post('/causaliSpeseRicavi/store', [CausaliSpeseRicaviController::class, 'store'])->name('causaliSpeseRicavi.store');
+Route::delete('stanze/destroy/{id}', [CausaliSpeseRicaviController::class, 'destroy'])->name('causaliSpeseRicavi.delete');

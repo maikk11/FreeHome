@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorecausaliSpeseRicaviRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorestanzeRequest;
 use App\Models\immobili;
+use App\Models\causaliSpeseRicavi;
 
 class CausaliSpeseRicaviController extends Controller
 {
@@ -13,23 +15,30 @@ class CausaliSpeseRicaviController extends Controller
      */
     public function index()
     {
-        return view('causaliSpeseRicavi.index');
+        $user_id = auth()->user()->id;
+        $causali = causaliSpeseRicavi::where('user_id', $user_id)->get();
+        return view('causaliSpeseRicavi.index', ['causali'=>$causali]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id)
+    public function create()
     {
-
+        $segni = CausaliSpeseRicavi::segni();
+        return view('causaliSpeseRicavi.create', ['segni'=>$segni]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorestanzeRequest $request, $immobile_id)
+    public function store(StorecausaliSpeseRicaviRequest $request)
     {
-
+        $validated = $request->validated();
+        $user_id = $request->user()->id;
+        $validated['user_id'] = $user_id;
+        CausaliSpeseRicavi::create($validated);
+        return redirect()->back()->with('success', 'Causale inserita correttamente.');
     }
 
     /**
@@ -61,7 +70,8 @@ class CausaliSpeseRicaviController extends Controller
      */
     public function destroy(string $id)
     {
-
+        causaliSpeseRicavi::where('id', $id)->delete();
+        return redirect()->back();
     }
 
 }
