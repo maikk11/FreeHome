@@ -13,7 +13,8 @@ class causaliSpeseRicavi extends Model
 
     public static function segni(){
         $segni = [
-        '+', '-',
+            '+' => 'Entrate',
+            '-' => 'Uscite',
         ];
         return $segni;
     }

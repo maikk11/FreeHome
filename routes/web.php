@@ -53,7 +53,9 @@ Route::post('stanze/store/{id}', [StanzeController::class, 'store'])->name('stan
 Route::get('/stanze/storico/{id}', [StanzeController::class, 'storico'])->name('stanze.storico');
 
 //gestione spese e ricavi
-Route::get('speseRicavi/index/{id}', [SpeseRicaviController::class, 'index'])->name('speseRicavi.index');
+Route::get('speseRicavi/index/{immobile_id}', [SpeseRicaviController::class, 'index'])->name('speseRicavi.index');
+Route::get('/speseRicavi/create/{immobile_id}/{segno}', [SpeseRicaviController::class, 'create'])->name('speseRicavi.create');
+Route::post('/speseRicavi/store/{immobile_id}', [SpeseRicaviController::class, 'store'])->name('speseRicavi.store');
 
 //gestione causali spese e ricavi
 Route::get('causaliSpeseRicavi/index', [CausaliSpeseRicaviController::class, 'index'])->name('causaliSpeseRicavi.index');

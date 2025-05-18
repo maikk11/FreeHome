@@ -3,33 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StorestanzeRequest;
+use App\Http\Requests\StorespeseRicaviRequest;
 use App\Models\immobili;
+Use App\Models\causaliSpeseRicavi;
+Use App\Models\SpeseRicavi;
 
 class SpeseRicaviController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index($immobile_id)
     {
-        return view('speseRicavi.index', ['id'=>$id]);
+        $movimenti = SpeseRicavi::where('immobile_id', $immobile_id)->get();
+        return view('speseRicavi.index', ['immobile_id'=>$immobile_id, 'movimenti'=>$movimenti]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id)
+    public function create($immobile_id, $segno)
     {
-
+        $user_id = auth()->user()->id;
+        $causali = CausaliSpeseRicavi::where('user_id', $user_id)->where('segno', $segno)->get();
+        return view('speseRicavi.create', ['immobile_id'=>$immobile_id,'causali'=>$causali]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorestanzeRequest $request, $immobile_id)
+    public function store(StorespeseRicaviRequest $request, $immobile_id)
     {
-
+        $validated = $request->validated();
+        $user_id = auth()->user()->id;
+        $validated['user_id'] = $user_id;
+        $validated['immobile_id'] = $immobile_id;
+        SpeseRicavi::create($validated);
+        return redirect()->back()->with('success', 'Movimento inserito correttamente.');
     }
 
     /**

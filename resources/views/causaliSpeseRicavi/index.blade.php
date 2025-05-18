@@ -4,7 +4,8 @@
     @foreach($causali as $causale)
     <div style="background: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; width: 300px; transition: transform 0.3s, box-shadow 0.3s; margin-left: 1%; margin-top: 2%;">
       <div style="padding: 20px; background-color:lightgray;">
-        <h2 style="margin: 0 0 10px; font-size: 24px;">Causale: {{ $causale->causale }}</h2>
+        <h2 style="margin: 0 0 10px; font-size: 24px;">{{ $causale->causale }}</h2>
+        <h2 style="margin: 0 0 10px; font-size: 24px;">{{ $causale->descrizione }}</h2>
         <form id="delete-form-{{ $causale->id }}" action="{{ route('causaliSpeseRicavi.delete', ['id' => $causale->id]) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')

@@ -5,7 +5,7 @@
 <a type="submit" class="btn btn-secondary" href="{{ url('immobili') }}" style="margin-left:1%">Torna indietro</a>
 <div>
 <a type="button" class="btn btn-primary" style="margin-left:1%;
-    margin-top:1%; margin-bottom:1%" href="{{ route('speseRicavi.index', ['id' => $immobile->id]) }}">Spese e ricavi</a>
+    margin-top:1%; margin-bottom:1%" href="{{ route('speseRicavi.index', ['immobile_id' => $immobile->id]) }}">Spese e ricavi</a>
     <a type="button" class="btn btn-primary" style="margin-left:1%;
     margin-top:1%; margin-bottom:1%" href="{{ route('immobili.edit', ['id' => $immobile->id]) }}">Modifica immobile</a>
 </div>

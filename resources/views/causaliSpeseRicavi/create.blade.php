@@ -6,12 +6,14 @@
     <form action="{{ route('causaliSpeseRicavi.store')}}" method="POST" class="mt-5 mx-auto col-lg-6">
         @csrf
         <div class="mb-3">
-            <label class="form-label">Segno</label>
+            <label class="form-label">Tipo causale</label>
             <select name="segno" id="segno" class="form-control" required>
-            <option value="">-- Scegli una segno --</option>
-            @foreach($segni as $segno)
-            <option value="{{ $segno }}">{{ $segno }}</option>
-            @endforeach
+            <option value="">-- Scegli un segno --</option>
+            @foreach($segni as $valore => $etichetta)
+            <option value="{{ $valore }}" {{ old('segno') == $valore ? 'selected' : '' }}>
+                {{ ucfirst($etichetta) }}
+            </option>
+             @endforeach
             </select>
             @error('segno') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
