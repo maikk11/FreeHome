@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('inquilini.index', ['id' => 0]) }}">Inquilini</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('causaliSpeseRicavi.index') }}">Causali</a>
+      </li>
       @endauth
     </ul>
 
@@ -51,6 +54,7 @@
       @auth
       <li><a class="dropdown-item" href="{{ route('immobili.index') }}">Immobili</a></li>
       <li><a class="dropdown-item" href="{{ route('inquilini.index') }}">Inquilini</a></li>
+      <li><a class="dropdown-item" href="{{ route('causaliSpeseRicavi.index') }}">Causali</a></li>
       <li><a class="dropdown-item" href="{{ route('profili.index', ['id' => auth()->user()->id]) }}">Profilo</a></li>
       <li>
         <form action="{{ route('logout') }}" method="POST" class="dropdown-item m-0 p-0">

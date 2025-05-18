@@ -3,10 +3,13 @@
     <h1 class="titolo_pagina">Bentornato {{ auth()->user()->name }}</h1>
     <div class="d-flex flex-column align-items-center justify-content-center text-center" style="margin-top: 5%;">
     <a href="{{ route('immobili.index') }}" class="btn btn-secondary btn-lg mb-3 w-75 w-md-50">
-        Immobili
+        IMMOBILI
     </a>
     <a href="{{ route('inquilini.index', ['id' => 0]) }}" class="btn btn-secondary btn-lg w-75 w-md-50">
-        Inquilini
+        INQUILINI
+    </a>
+    <a href="{{ route('causaliSpeseRicavi.index') }}" class="btn btn-secondary btn-lg w-75 w-md-50" style="margin-top: 1%;">
+        CAUSALI
     </a>
     </div>
 

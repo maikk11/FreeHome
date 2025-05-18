@@ -5,6 +5,8 @@ use App\Http\Controllers\ImmobiliController;
 use App\Http\Controllers\InquiliniController;
 use App\Http\Controllers\ProfiliController;
 use App\Http\Controllers\StanzeController;
+use App\Http\Controllers\SpeseRicaviController;
+use App\Http\Controllers\CausaliSpeseRicaviController;
 
 Route::get('/', function () {
     return view('index');
@@ -49,3 +51,9 @@ Route::put('/stanze/{stanza}', [StanzeController::class, 'update'])->name('stanz
 Route::get('/stanze/{id}', [StanzeController::class, 'create'])->name('stanze.create');
 Route::post('stanze/store/{id}', [StanzeController::class, 'store'])->name('stanze.store');
 Route::get('/stanze/storico/{id}', [StanzeController::class, 'storico'])->name('stanze.storico');
+
+//gestione spese e ricavi
+Route::get('speseRicavi/index/{id}', [SpeseRicaviController::class, 'index'])->name('speseRicavi.index');
+
+//gestione causali spese e ricavi
+Route::get('causaliSpeseRicavi/index', [CausaliSpeseRicaviController::class, 'index'])->name('causaliSpeseRicavi.index');
