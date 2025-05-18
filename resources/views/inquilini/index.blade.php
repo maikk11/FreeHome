@@ -11,18 +11,36 @@
         <h2 style="margin: 0 0 10px; font-size: 24px;">{{ $inquilino->nome }} {{$inquilino->cognome}}</h2>
         @if($immobile_id==0)
         <a type="button" class="btn btn-success" href="{{ route('inquilini.inquilino', ['id' => $inquilino->id])}}" style="width: 100px;">Anagrafica</a>
-        <form method="POST" action="{{ route('inquilini.delete', ['id' => $inquilino->id]) }}" style="display:inline;">
+        <form id="delete-form-{{ $inquilino->id }}" action="{{ route('inquilini.delete', ['id' => $inquilino->id]) }}" method="POST"  style="display:inline;">
         @csrf
         @method('DELETE')
-        <button class="btn btn-danger"
+        <button class="btn btn-danger" type="button"
         style="width:max-content; border-radius:10px;color:white; margin-left:8px"
-        type="submit">Elimina</button>
+        onclick="confirmDelete('{{ $inquilino->id }}')">Elimina</button>
+        </form>
         @else
         <a type="button" class="btn btn-warning" href="{{ route('inquilini.inquilino', ['id' => $inquilino->id])}}" style="width: 100px;">Assegna</a>
         <form method="POST" action="{{ route('inquilini.delete', ['id' => $inquilino->id]) }}" style="display:inline;">
         @endif
-        </form>
       </div>
   </div>
     @endforeach
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Eliminare inquilino?',
+            text: "Questa azione non può essere annullata!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e80808',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sì, elimina!',
+            cancelButtonText: 'Annulla'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        })
+    }
+</script>
 </x-main-layout>

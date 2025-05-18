@@ -9,15 +9,33 @@
         <h2 style="margin: 0 0 10px; font-size: 24px;">Prezzo affitto: {{$stanza->prezzo_affitto}} €</h2>
         <a type="button" class="btn btn-success" style="width: 100px; margin-top:1%; margin-bottom:1%" href="{{ route('stanze.storico', ['id' => $stanza->id]) }}">Storico</a>
         <a type="button" class="btn btn-primary" style="width: 100px; margin-top:1%; margin-bottom:1%" href="{{ route('stanze.edit', ['id' => $stanza->id]) }}">Modifica</a>
-        <form action="{{ route('stanze.delete', ['id' => $stanza->id]) }}" method="POST" style="display:inline;">
+        <form action="{{ route('stanze.delete', ['id' => $stanza->id]) }}" method="POST" style="display:inline;" id="delete-form-{{ $stanza->id }}">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger"
-                style="width:max-content; border-radius:10px;color:white; width:100px;">
+                <button class="btn btn-danger" type="button"
+                style="width:max-content; border-radius:10px;color:white; width:100px;" onclick="confirmDelete('{{ $stanza->id }}')">
                 Elimina
                 </button>
         </form>
       </div>
   </div>
     @endforeach
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Eliminare stanza?',
+            text: "Questa azione non può essere annullata!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e80808',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sì, elimina!',
+            cancelButtonText: 'Annulla'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        })
+    }
+</script>
 </x-main-layout>

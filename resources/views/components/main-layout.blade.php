@@ -10,6 +10,7 @@
 
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
     <x-navbar></x-navbar>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <main style="flex: 1;">
         {{$slot}}
     </main>

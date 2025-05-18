@@ -1,5 +1,4 @@
 <x-main-layout>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <h1 class="titolo_pagina">IMMOBILI</h1>
     <a type="button" class="btn btn-primary" href="{{ route('immobili.create')}}" style="margin-left: 1%; margin-top: 1%;">Inserisci immobile</a>
     @foreach($immobili as $immobile)
