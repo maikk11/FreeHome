@@ -61,4 +61,4 @@ Route::post('/speseRicavi/store/{immobile_id}', [SpeseRicaviController::class, '
 Route::get('causaliSpeseRicavi/index', [CausaliSpeseRicaviController::class, 'index'])->name('causaliSpeseRicavi.index');
 Route::get('/causaliSpeseRicavi/create', [CausaliSpeseRicaviController::class, 'create'])->name('causaliSpeseRicavi.create');
 Route::post('/causaliSpeseRicavi/store', [CausaliSpeseRicaviController::class, 'store'])->name('causaliSpeseRicavi.store');
-Route::delete('stanze/destroy/{id}', [CausaliSpeseRicaviController::class, 'destroy'])->name('causaliSpeseRicavi.delete');
+Route::delete('/causaliSpeseRicavi/destroy/{id}', [CausaliSpeseRicaviController::class, 'destroy'])->name('causaliSpeseRicavi.delete');

@@ -26,6 +26,6 @@
             @error('data') <span class="small text-danger">{{$message}}</span>@enderror
         </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
-        <button type="submit" class="btn btn-secondary" onclick="window.history.back();">Torna indietro</button>
+        <a type="submit" class="btn btn-secondary" href="{{ route('speseRicavi.index', ['immobile_id'=>$immobile_id]) }}">Torna indietro</a>
     </form>
 </x-main-layout>

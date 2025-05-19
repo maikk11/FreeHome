@@ -109,7 +109,7 @@
     @endif
 
     <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
-    <button type="submit" class="btn btn-secondary" style="margin-bottom:2%" onclick="window.history.back();">Torna indietro</button>
+    <a href="{{ route('immobili.immobile', ['id'=>$id])}}" class="btn btn-secondary" style="margin-bottom:2%" >Torna indietro</a>
 </form>
 
 </x-main-layout>

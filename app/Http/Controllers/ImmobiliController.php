@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\immobili;
 use App\Models\inquilini;
 use App\Models\stanze;
+use App\Models\speseRicavi;
 use App\Http\Requests\StoreimmobiliRequest;
 use App\Http\Requests\UpdateimmobiliRequest;
 use Illuminate\Http\Request;
@@ -85,6 +86,7 @@ class ImmobiliController extends Controller
     public function destroy(string $id)
     {
         Stanze::where('immobile_id', $id)->delete();
+        SpeseRicavi::where('immobile_id',$id)->delete();
         Immobili::where('id', $id)->delete();
         return redirect()->back();
     }
@@ -94,6 +96,7 @@ class ImmobiliController extends Controller
         $immobile = Immobili::findOrFail($immobile_id);
         $immobile->decrementaLocaliAffittati();
         $inquilino = Inquilini::findOrFail($inquilino_id);
+        $stanza_id = $inquilino->stanza_id;
         $data = $inquilino->uscita($data);
         Storico_inquilini::create([
             'nome'=>$inquilino->nome,
@@ -109,7 +112,7 @@ class ImmobiliController extends Controller
             'numero_telefono' => $inquilino->numero_telefono,
             'data_subentro' => $inquilino->data_subentro,
             'data_uscita' => $data,
-            'stanza_id' => $inquilino->stanza_id,
+            'stanza_id' => $stanza_id,
         ]);
         return redirect()->back();
     }

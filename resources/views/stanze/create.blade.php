@@ -41,6 +41,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Inserisci</button>
-        <button type="submit" class="btn btn-secondary" onclick="window.history.back();">Annulla</button>
+        <a href="{{ route('immobili.immobile', ['id'=>$id])}}" class="btn btn-secondary" >Torna indietro</a>
     </form>
 </x-main-layout>

@@ -1,8 +1,9 @@
 <x-main-layout>
     <h1 class="titolo_pagina">COSTI E RICAVI</h1>
-    <div>
+    <a href="{{ route('immobili.immobile', ['id'=>$immobile_id])}}" class="btn btn-secondary" style="margin-left:1%">Torna indietro</a>
+    <div style="margin-top: 1%;">
         <a href="{{ route('speseRicavi.create', ['immobile_id'=>$immobile_id, 'segno' => '+']) }}" class="btn btn-primary" style="margin-left:1%">Inserisci Entrata</a>
-    <a href="{{ route('speseRicavi.create', ['immobile_id'=>$immobile_id, 'segno' => '-']) }}" class="btn btn-primary" style="margin-left:1%">Inserisci Uscita</a>
+        <a href="{{ route('speseRicavi.create', ['immobile_id'=>$immobile_id, 'segno' => '-']) }}" class="btn btn-primary" style="margin-left:1%">Inserisci Uscita</a>
     </div>
     <div>
         @foreach($movimenti as $movimento)

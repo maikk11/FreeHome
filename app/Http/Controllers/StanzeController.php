@@ -7,6 +7,7 @@ use App\Http\Requests\StorestanzeRequest;
 use App\Models\stanze;
 use App\Models\immobili;
 use App\Models\inquilini;
+use App\Models\speseRicavi;
 use App\Models\storico_inquilini;
 
 class StanzeController extends Controller

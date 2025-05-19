@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('carta_identità', 25);
             $table->string('codice_fiscale', 25);
             $table->date('data_nascita');
-            $table->string('provincia_nascita', 2);
+            $table->string('provincia_nascita', 25);
             $table->string('comune_nascita', 50);
-            $table->string('provincia_residenza', 2);
+            $table->string('provincia_residenza', 25);
             $table->string('comune_residenza', 50);
             $table->string('email')->unique();
             $table->string('numero_telefono', 20);
