@@ -2,7 +2,11 @@
     @if(session()->has('success'))
     <h2 class="alert alert-success">{{session('success')}}</h2>
     @endif
-    <h1 class="titolo_pagina">Inserisci spesa\ricavo</h1>
+    @if($segno=='+')
+    <h1 class="titolo_pagina">Inserisci ricavo</h1>
+    @else
+    <h1 class="titolo_pagina">Inserisci spesa</h1>
+    @endif
     <form action="{{ route('speseRicavi.store', ['immobile_id'=>$immobile_id])}}" method="POST" class="mt-5 mx-auto col-lg-6">
         @csrf
         <div class="mb-3">

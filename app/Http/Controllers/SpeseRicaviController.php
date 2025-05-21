@@ -15,8 +15,17 @@ class SpeseRicaviController extends Controller
      */
     public function index($immobile_id)
     {
-        $movimenti = SpeseRicavi::where('immobile_id', $immobile_id)->get();
-        return view('speseRicavi.index', ['immobile_id'=>$immobile_id, 'movimenti'=>$movimenti]);
+        $movimenti = SpeseRicavi::where('immobile_id', $immobile_id)->orderBy('data', 'desc')->get();
+        foreach($movimenti as $movimento){
+            $segno = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('segno');
+            $movimento->segno = $segno;
+            $descrizione = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('descrizione');
+            $movimento->descrizione = $descrizione;
+        }
+        $totale = SpeseRicavi::where('immobile_id', $immobile_id)
+        ->sum('valore');
+
+        return view('speseRicavi.index', ['immobile_id'=>$immobile_id, 'movimenti'=>$movimenti, 'totale'=>$totale]);
     }
 
     /**
@@ -26,7 +35,7 @@ class SpeseRicaviController extends Controller
     {
         $user_id = auth()->user()->id;
         $causali = CausaliSpeseRicavi::where('user_id', $user_id)->where('segno', $segno)->get();
-        return view('speseRicavi.create', ['immobile_id'=>$immobile_id,'causali'=>$causali]);
+        return view('speseRicavi.create', ['immobile_id'=>$immobile_id,'causali'=>$causali, 'segno'=>$segno]);
     }
 
     /**
