@@ -15,15 +15,20 @@ class SpeseRicaviController extends Controller
      */
     public function index($immobile_id)
     {
+        $totale = 0;
         $movimenti = SpeseRicavi::where('immobile_id', $immobile_id)->orderBy('data', 'desc')->get();
         foreach($movimenti as $movimento){
             $segno = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('segno');
             $movimento->segno = $segno;
             $descrizione = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('descrizione');
             $movimento->descrizione = $descrizione;
+            if($segno=='+'){
+                $totale += $movimento->valore;
+            }
+            else{
+                $totale -= $movimento->valore;
+            }
         }
-        $totale = SpeseRicavi::where('immobile_id', $immobile_id)
-        ->sum('valore');
 
         return view('speseRicavi.index', ['immobile_id'=>$immobile_id, 'movimenti'=>$movimenti, 'totale'=>$totale]);
     }
