@@ -121,4 +121,10 @@ class InquiliniController extends Controller
         Inquilini::where('id', $id)->delete();
         return redirect()->back();
     }
+
+    public function assign(Request $immobile_id){
+        $stanze = Stanze::where('immobile_id', $immobile_id)
+        ->select('id', 'nome_stanza')->get();
+        return view('inquilini.assign', compact('stanze'));
+    }
 }

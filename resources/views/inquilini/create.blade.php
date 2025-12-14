@@ -107,9 +107,13 @@
     @else
     <input type="hidden" name="stanza_id" value=0>
     @endif
-
+    @if($id!=0)
     <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
     <a href="{{ route('immobili.immobile', ['id'=>$id])}}" class="btn btn-secondary" style="margin-bottom:2%" >Torna indietro</a>
+    @else
+    <button type="submit" class="btn btn-primary" style="margin-bottom:2%">Inserisci</button>
+    <a href="{{ route('inquilini.index', ['id' => 0]) }}" class="btn btn-secondary" style="margin-bottom:2%" >Torna indietro</a>
+    @endif
 </form>
 
 </x-main-layout>

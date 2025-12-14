@@ -36,6 +36,7 @@ Route::get('inquilini/show/{id}/{provenienza}', [InquiliniController::class, 'sh
 Route::delete('inquilini/destroy/{id}', [InquiliniController::class, 'destroy'])->name('inquilini.delete');
 Route::get('inquilini/edit/{id}', [InquiliniController::class, 'edit'])->name('inquilini.edit');
 Route::put('/inquilini/{inquilino}', [InquiliniController::class, 'update'])->name('inquilini.update');
+Route::get('inquilini', [InquiliniController::class, 'assign'])->name('inquilini.assign');
 
 //Gestione profili
 Route::get('profili/index/{id}', [ProfiliController::class, 'index'])->name('profili.index');
