@@ -1,4 +1,7 @@
 <x-main-layout>
+@if(session()->has('success'))
+<h2 class="alert alert-success">{{session('success')}}</h2>
+@endif
 <h1 class="titolo_pagina">{{$immobile->comune}} {{$immobile->indirizzo}} {{$immobile->civico}}</h1>
 <h3 class="titolo_pagina">locali totali: {{$immobile->locali_affittabili ?? 0}}</h3>
 <h3 class="titolo_pagina">locali affittati: {{$immobile->locali_affittati ?? 0}}</h3>

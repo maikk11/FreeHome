@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 use App\Models\inquilini;
 use App\Models\immobili;
 use App\Models\stanze;
+use Carbon\Carbon;
 
 class InquiliniController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id=0)
+    public function index($id=null)
     {
+
         if($id==0){
             $inquilini = Inquilini::where('user_id', auth()->id())->get();
         }
@@ -122,9 +124,22 @@ class InquiliniController extends Controller
         return redirect()->back();
     }
 
-    public function assign(Request $immobile_id){
+    public function assign($immobile_id, $inquilino_id)
+    {
         $stanze = Stanze::where('immobile_id', $immobile_id)
         ->select('id', 'nome_stanza')->get();
-        return view('inquilini.assign', compact('stanze'));
+        return view('inquilini.assign', ['stanze' => $stanze,'immobile_id' =>$immobile_id, 'inquilino_id'=>$inquilino_id]);
+    }
+
+    public function assign_store(Request $request, $immobile_id, $inquilino_id){
+        $request->validate([
+        'stanza_id' => 'required|exists:stanze,id',]);
+        $stanza_id = $request->stanza_id;
+        $inquilino = Inquilini::where('id', $inquilino_id)->first();
+        $inquilino->immobile_id = $immobile_id;
+        $inquilino->stanza_id = $stanza_id;
+        $inquilino->data_subentro = Carbon::now()->format('Y-m-d');
+        $inquilino->save();
+        return redirect()->route('immobili.immobile', ['id' => $immobile_id])->with('success', 'Inquilino assegnato correttamente!');
     }
 }

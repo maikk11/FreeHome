@@ -19,7 +19,7 @@
         onclick="confirmDelete('{{ $inquilino->id }}')">Elimina</button>
         </form>
         @else
-        <a type="button" class="btn btn-warning" href="{{ route('inquilini.assign')}}" style="width: 100px;">Assegna</a>
+        <a type="button" class="btn btn-warning" href="{{ route('inquilini.assign',['id' => $immobile_id, 'inquilino_id'=>$inquilino->id])}}" style="width: 100px;">Assegna</a>
         @endif
       </div>
   </div>
