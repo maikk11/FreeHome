@@ -85,7 +85,34 @@ class SpeseRicaviController extends Controller
      */
     public function destroy(string $id)
     {
+        SpeseRicavi::where('id',$id)->delete();
+        return redirect()->back();
+    }
 
+    public function search(Request $request, $immobile_id)
+    {
+        $totale = 0;
+        $query = SpeseRicavi::where('immobile_id', $immobile_id);
+        if ($request->filled('data_da')) {
+            $query->whereDate('data', '>=', $request->data_da);
+        }
+        if ($request->filled('data_a')) {
+            $query->whereDate('data', '<=', $request->data_a);
+        }
+        $movimenti = $query->orderBy('data', 'desc')->get();
+        foreach($movimenti as $movimento){
+            $segno = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('segno');
+            $movimento->segno = $segno;
+            $descrizione = CausaliSpeseRicavi::where('causale', $movimento->causale)->value('descrizione');
+            $movimento->descrizione = $descrizione;
+            if($segno=='+'){
+                $totale += $movimento->valore;
+            }
+            else{
+                $totale -= $movimento->valore;
+            }
+        }
+        return view('speseRicavi.index', compact('movimenti', 'totale', 'immobile_id'));
     }
 
 }
